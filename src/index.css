@@ -10,3 +10,18 @@ body,
   background-color: #000;
   color: #fff;
 }
+
+.link {
+  padding: 10px 20px;
+  margin: 0 20px;
+  text-decoration: 'none';
+  background-color: red;
+}
+
+table,tr,th,td {
+  border: 1px solid #fff;
+}
+
+th {
+  width: 200px;
+}
