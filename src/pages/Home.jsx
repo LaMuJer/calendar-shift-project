@@ -16,11 +16,11 @@ const Home = () => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            mt: '20px'
+            mt: '30px'
         }}>            
             <table className="shiftSheet">
                 <thead>
-                    <tr>
+                    <tr >
                         <th>Date</th>
                         <th>Day</th>
                         <th>Shift A</th>
@@ -31,14 +31,29 @@ const Home = () => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>cell1_1</td>
-                        <td>cell2_1</td>
-                        <td>cell3_1</td>
-                        <td>cell4_1</td>
-                        <td>cell5_1</td>
-                        <td>cell6_1</td>
+                        <td>30/1/23</td>
+                        <td>Monday</td>
+                        <td>Off</td>
+                        <td>Off</td>
+                        <td>Morning</td>
+                        <td>Morning</td>
                     </tr>
-
+                    <tr className='highlight'>
+                        <td>1/2/23</td>
+                        <td>Tuesday</td>
+                        <td>Night</td>
+                        <td>Night</td>
+                        <td>Off</td>
+                        <td>Off</td>
+                    </tr>
+                    <tr>
+                        <td>2/2/23</td>
+                        <td>Wednesday</td>
+                        <td>Off</td>
+                        <td>Off</td>
+                        <td>Morning</td>
+                        <td>Morning</td>
+                    </tr>
                 </tbody>
             </table >
         </Box>
