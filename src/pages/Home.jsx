@@ -39,7 +39,13 @@ const Home = () => {
         </thead>
         <tbody>
           {data.map((i, index) => (
-            <tr className={index % 2 == 0 && "hightlight"}>
+            <tr
+              key={index}
+              className={
+                new Date().toLocaleDateString() ===
+                  new Date(i.date).toLocaleDateString() && "highlight"
+              }
+            >
               <td>{new Date(i.date).toLocaleDateString()}</td>
               <td>
                 {new Date(i.date).toLocaleDateString("us", { weekday: "long" })}
