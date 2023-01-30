@@ -1,12 +1,11 @@
 import React, { useState } from "react"
-import Calendar from "react-calendar"
 import '../App.css'
 import { Box, Button, Stack, Typography } from "@mui/material"
 import { lists } from "../utils/constant"
+import CalendarModel from "../components/CalendarModel"
 
 const Shift = () => {
 
-    const [value, setValue] = useState(new Date())
 
     return (
 
@@ -24,9 +23,9 @@ const Shift = () => {
                 alignItems: 'center'
             }} >
                 <Button variant="outlined" color="info" style={{ marginTop: '30px' }} >
-                    <p style={{ fontSize: '10px' }}>Go to</p>
+                    <p style={{ fontSize: '10px' }}>Edit</p>
                 </Button>
-                <Calendar onChange={setValue} value={value} />
+                <CalendarModel />
                 <Stack direction={'row'} sx={{
                     width: '100vw',
                     height: '20vh',
