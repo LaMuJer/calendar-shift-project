@@ -1,27 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
 }
 
 html,
 body,
 #root {
-  background-color: #000;
-  color: #fff;
+  background-color: #fefefe;
+  /* color: #fff; */
 }
 
 .link {
   padding: 10px 20px;
   margin: 0 20px;
   text-decoration: 'none';
-  background-color: red;
 }
 
-table,tr,th,td {
-  border: 1px solid #fff;
+table {
+  height: 100%;
 }
 
-th {
-  width: 200px;
+table.shiftSheet {
+  width: 90vw;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+table.shiftSheet td,
+table.shiftSheet th {
+  border: 1px solid #00000030;
+  padding: 5px 5px;
+}
+
+table.shiftSheet tbody td {
+  font-size: 13px;
+}
+
+table.shiftSheet thead {
+
+  border-bottom: 2px solid #00000060;
+}
+
+table.shiftSheet thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #000;
 }

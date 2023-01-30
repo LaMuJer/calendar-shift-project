@@ -7,7 +7,7 @@ import {Box } from "@mui/material"
 const App = () => {
   return (
     <BrowserRouter>
-      <Box>
+      <Box >
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
