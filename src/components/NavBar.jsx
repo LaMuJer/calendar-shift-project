@@ -12,7 +12,7 @@ const NavBar = () => {
   const [about, setabout] = useState(false);
   const [modal, setmodal] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = (e) => {
     setOpen(!open);
     setabout(false);
     setmodal(false);
@@ -44,22 +44,38 @@ const NavBar = () => {
           Home
         </Typography>
       </Link>
-      <Link to={"/shift/A"} style={{ textDecoration: "none" }}>
+      <Link
+        onClick={handleClick}
+        to={"/shift/A"}
+        style={{ textDecoration: "none" }}
+      >
         <Typography variant="body2" className="link" color="initial">
           Shift A
         </Typography>
       </Link>
-      <Link to={"/shift/B"} style={{ textDecoration: "none" }}>
+      <Link
+        onClick={handleClick}
+        to={"/shift/B"}
+        style={{ textDecoration: "none" }}
+      >
         <Typography variant="body2" className="link" color="initial">
           Shift B
         </Typography>
       </Link>
-      <Link to={"/shift/C"} style={{ textDecoration: "none" }}>
+      <Link
+        onClick={handleClick}
+        to={"/shift/C"}
+        style={{ textDecoration: "none" }}
+      >
         <Typography variant="body2" className="link" color="initial">
           Shift C
         </Typography>
       </Link>
-      <Link to={"/shift/D"} style={{ textDecoration: "none" }}>
+      <Link
+        onClick={handleClick}
+        to={"/shift/D"}
+        style={{ textDecoration: "none" }}
+      >
         <Typography variant="body2" className="link" color="initial">
           Shift D
         </Typography>
