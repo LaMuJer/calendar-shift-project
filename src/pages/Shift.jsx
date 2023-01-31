@@ -3,8 +3,10 @@ import "../App.css";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import CalendarModel from "../components/CalendarModel";
 import Descriptions from "../components/Descriptions";
+import { useParams } from "react-router-dom";
 
 const Shift = () => {
+  const { id } = useParams();
 
   return (
     <Stack
@@ -27,8 +29,8 @@ const Shift = () => {
         <Button variant="outlined" color="info" style={{ marginTop: "30px" }}>
           <p style={{ fontSize: "10px" }}>Edit</p>
         </Button>
-        <CalendarModel />
-          <Descriptions />          
+        <CalendarModel shift={id} />
+        <Descriptions />
       </Box>
     </Stack>
   );

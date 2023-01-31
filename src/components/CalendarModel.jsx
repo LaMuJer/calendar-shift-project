@@ -1,24 +1,61 @@
-import { useState } from "react"
-import Calendar from "react-calendar"
+import { useState, createElement } from "react";
+import Calendar from "react-calendar";
 
-const CalendarModel = () => {
-    const [value, setValue] = useState(new Date())
+// icons
+import LightModeRoundedIcon from "@mui/icons-material/LightModeRounded";
+import NightlightRoundedIcon from "@mui/icons-material/NightlightRounded";
+import NotInterestedRoundedIcon from "@mui/icons-material/NotInterestedRounded";
 
-    const showOneDayOnly = (value) => {
-        // console.log(value)
+// date
+import date from "../utils/date";
+
+const CalendarModel = ({ shift }) => {
+  const [value, setValue] = useState(new Date());
+
+  const showOneDayOnly = (value) => {
+    console.log(value);
+  };
+
+  const rangeValue = [];
+
+  const drillU = ({ activeStartDate, view }) =>
+    alert("Drilled up to: ", activeStartDate, view);
+
+  const handleManageData = (param) => {
+    for (const x of date) {
+      if (
+        new Date(x.date).toLocaleDateString() ==
+        new Date(param.date).toLocaleDateString()
+      ) {
+        if (x.assign[shift] == "Off") {
+          return createElement(NotInterestedRoundedIcon);
+        } else if (x.assign[shift] == "Morning") {
+          return createElement(LightModeRoundedIcon);
+        } else if (x.assign[shift] == "Night") {
+          return createElement(NightlightRoundedIcon);
+        }
+      }
     }
+    // if (
+    //   new Date(param.date).toLocaleDateString()  ==
+    //   new Date().toLocaleDateString()
+    // ) {
+    //   console.log("hello");
+    //   return "Hello";
+    // }
+  };
 
-    const rangeValue = []
-    console.log(rangeValue)
-
-    const drillU = ({ activeStartDate, view }) => alert('Drilled up to: ', activeStartDate, view)
-
-    return (
-        <>
-            <Calendar onChange={setValue} value={value} selectRange={true} showNeighboringMonth={false}
-                onClickDay={showOneDayOnly}
-            />
-        </>
-    )
-}
-export default CalendarModel
+  return (
+    <>
+      <Calendar
+        onChange={setValue}
+        value={value}
+        tileContent={handleManageData}
+        selectRange={true}
+        showNeighboringMonth={false}
+        onClickDay={showOneDayOnly}
+      />
+    </>
+  );
+};
+export default CalendarModel;
