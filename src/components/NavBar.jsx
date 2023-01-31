@@ -2,17 +2,26 @@ import { Stack } from "@mui/system"
 import { Link } from "react-router-dom"
 import Typography from '@mui/material/Typography'
 import { useState } from "react"
-import { Button } from "@mui/material"
+import { Button, Collapse, List, ListItemButton } from "@mui/material"
 import Modal from "./Modal"
+import { ExpandLess, ExpandMore, } from "@mui/icons-material"
+import About from "./About"
 
 const NavBar = () => {
 
-    const [category, setCategory] = useState('Home')
-    const [modal, setmodal] = useState(true)
+    const [open, setOpen] = useState(true);
+    const handleClick = () => {
+        setOpen(!open);
+    };
 
+    const [modal, setmodal] = useState(true)
     const openModal = () => {
-        setmodal((pre) => !pre)
-        console.log(modal)
+        setmodal(!modal);
+    }
+
+    const [about, setabout] = useState(true)
+    const openAbout = () => {
+        setabout(!about);
     }
 
     return (
@@ -38,11 +47,37 @@ const NavBar = () => {
             <Link to={'/shift/D'} style={{ textDecoration: 'none' }} >
                 <Typography variant="body2" className='link' color="initial">Shift D</Typography>
             </Link>
-            <Button onClick={openModal}>
-                <Typography variant="body2" className='link' color="initial">About</Typography>
-            </Button>
+            {/* <Button onClick={openModal}>
 
-            <Modal display={modal}  />
+            </Button> */}
+            <List
+                sx={{
+                    width: '100%', maxWidth: 100,
+                    height: '40px', borderRadius: '20px',
+                    bgcolor: '#caf0f8', padding: '0px'
+                }}
+                component="nav"
+                aria-labelledby="subheader"
+            >
+                <ListItemButton onClick={handleClick}>
+                    <Typography sx={{ p: 0 }} variant="body2" className='link' color="initial">More</Typography>
+                    {open ? <ExpandLess /> : <ExpandMore />}
+                </ListItemButton>
+                <Collapse in={open} timeout="auto" unmountOnExit>
+                    <List component="div" >
+                        <ListItemButton onClick={openModal} >
+                            <Typography sx={{ p: 0 }} variant="body2" className='link' color="initial">Disclaimer</Typography>
+                        </ListItemButton>
+                        <ListItemButton onClick={openAbout} >
+                            <Typography sx={{ p: 0 }} variant="body2" className='link' color="initial">About</Typography>
+                        </ListItemButton>
+                    </List>
+                </Collapse>
+            </List>
+
+            {modal ? <Modal display={modal} /> : ''}
+            {about ? <About display={about} /> : ''}
+
 
             {/* {shifts.map(({ name }, index) => {
                 <Link to={`/shift/${name}`} style={{ textDecoration: 'none' }} key={index} >
