@@ -9,18 +9,23 @@ import About from "./About";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
+  const [about, setabout] = useState(false);
+  const [modal, setmodal] = useState(false);
+
   const handleClick = () => {
     setOpen(!open);
+    setabout(false);
+    setmodal(false);
   };
 
-  const [modal, setmodal] = useState(false);
   const openModal = () => {
     setmodal(!modal);
+    setabout(false);
   };
 
-  const [about, setabout] = useState(false);
   const openAbout = () => {
     setabout(!about);
+    setmodal(false);
   };
 
   return (
@@ -85,7 +90,12 @@ const NavBar = () => {
           </Typography>
           {open ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
-        <Collapse in={open} timeout="auto" unmountOnExit>
+        <Collapse
+          style={{ backgroundColor: "white" }}
+          in={open}
+          timeout="auto"
+          unmountOnExit
+        >
           <List component="div">
             <ListItemButton onClick={openModal}>
               <Typography
