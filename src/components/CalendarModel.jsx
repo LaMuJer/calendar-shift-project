@@ -21,6 +21,8 @@ const CalendarModel = ({ shift }) => {
   const drillU = ({ activeStartDate, view }) =>
     alert("Drilled up to: ", activeStartDate, view);
 
+  console.log(date);
+
   const handleManageData = (param) => {
     for (const x of date) {
       if (
@@ -36,13 +38,6 @@ const CalendarModel = ({ shift }) => {
         }
       }
     }
-    // if (
-    //   new Date(param.date).toLocaleDateString()  ==
-    //   new Date().toLocaleDateString()
-    // ) {
-    //   console.log("hello");
-    //   return "Hello";
-    // }
   };
 
   return (

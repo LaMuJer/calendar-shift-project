@@ -13,7 +13,7 @@ const dates = getDates(start, end);
 
 const assignOne = { A: "Off", B: "Morning", C: "Night", D: "Off" };
 const assignTwo = { A: "Morning", B: "Off", C: "Off", D: "Night" };
-const assignThree = { A: "Off", B: "Night", C: "Morning", D: "off" };
+const assignThree = { A: "Off", B: "Night", C: "Morning", D: "Off" };
 const assignFour = { A: "Night", B: "Off", C: "Off", D: "Morning" };
 
 let count = 1;

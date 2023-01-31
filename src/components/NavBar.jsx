@@ -18,6 +18,12 @@ const NavBar = () => {
     setmodal(false);
   };
 
+  const handleAllClose = () => {
+    setOpen(false);
+    setabout(false);
+    setmodal(false);
+  };
+
   const openModal = () => {
     setmodal(!modal);
     setabout(false);
@@ -45,7 +51,7 @@ const NavBar = () => {
         </Typography>
       </Link>
       <Link
-        onClick={handleClick}
+        onClick={handleAllClose}
         to={"/shift/A"}
         style={{ textDecoration: "none" }}
       >
@@ -54,7 +60,7 @@ const NavBar = () => {
         </Typography>
       </Link>
       <Link
-        onClick={handleClick}
+        onClick={handleAllClose}
         to={"/shift/B"}
         style={{ textDecoration: "none" }}
       >
@@ -63,7 +69,7 @@ const NavBar = () => {
         </Typography>
       </Link>
       <Link
-        onClick={handleClick}
+        onClick={handleAllClose}
         to={"/shift/C"}
         style={{ textDecoration: "none" }}
       >
@@ -72,7 +78,7 @@ const NavBar = () => {
         </Typography>
       </Link>
       <Link
-        onClick={handleClick}
+        onClick={handleAllClose}
         to={"/shift/D"}
         style={{ textDecoration: "none" }}
       >
