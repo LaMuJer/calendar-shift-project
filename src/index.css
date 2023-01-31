@@ -61,7 +61,7 @@ table.shiftSheet thead th {
 }
 
 .active {
-  background-color: rgb(136 255 54 / 60%);
+  background-color: #a8dadc;
   border-radius: 20px;
   outline: none;
 }

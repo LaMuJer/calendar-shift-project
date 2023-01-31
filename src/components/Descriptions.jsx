@@ -4,19 +4,26 @@ import React from "react";
 
 const Descriptions = () => {
     return (
-        <Stack sx={{
+        <div style={{
             display: 'felx',
+            flexDirection: 'row',
             width: '100vw',
             justifyContent: 'center',
             alignItems: 'center',
-            mt: '30px',
-            bgcolor: 'pink'
+            marginTop: '30px',
         }} >
-            <Box sx={{
-                width: '40vw',
+            <div style={{
+                width: '50vw',
+                margin: 'auto',
+            }}>
+                <Typography variant="h6" >Date : </Typography>
+            </div>
+            <div style={{
                 height: '100%',
-                bgcolor: '#f1faee',
-                borderRadius: '15px'
+                backgroundColor: '#f1faee',
+                borderRadius: '15px',
+                width: '50vw',
+                margin: 'auto', marginTop: '30px',
             }}>
                 {lists.map(({ shift, duration, icon, style }, index) => {
                     return (
@@ -37,9 +44,9 @@ const Descriptions = () => {
                         </Stack>
                     );
                 })}
-            </Box>
-            
-        </Stack>
+            </div>
+
+        </div>
     )
 }
 

@@ -2,13 +2,21 @@ import { Stack } from "@mui/system"
 import { Link } from "react-router-dom"
 import Typography from '@mui/material/Typography'
 import { useState } from "react"
+import { Button } from "@mui/material"
+import Modal from "./Modal"
 
 const NavBar = () => {
 
     const [category, setCategory] = useState('Home')
+    const [modal, setmodal] = useState(true)
+
+    const openModal = () => {
+        setmodal((pre) => !pre)
+        console.log(modal)
+    }
 
     return (
-        <Stack direction={'row'} sx={{            
+        <Stack direction={'row'} sx={{
             width: '100vw',
             display: 'flex',
             justifyContent: 'center',
@@ -20,7 +28,7 @@ const NavBar = () => {
             </Link>
             <Link to={'/shift/A'} style={{ textDecoration: 'none' }} >
                 <Typography variant="body2" className='link' color="initial">Shift A</Typography>
-            </Link>        
+            </Link>
             <Link to={'/shift/B'} style={{ textDecoration: 'none' }} >
                 <Typography variant="body2" className='link' color="initial">Shift B</Typography>
             </Link>
@@ -30,7 +38,11 @@ const NavBar = () => {
             <Link to={'/shift/D'} style={{ textDecoration: 'none' }} >
                 <Typography variant="body2" className='link' color="initial">Shift D</Typography>
             </Link>
-            <Typography variant="body2" className='link' color="initial">About</Typography>
+            <Button onClick={openModal}>
+                <Typography variant="body2" className='link' color="initial">About</Typography>
+            </Button>
+
+            <Modal display={modal}  />
 
             {/* {shifts.map(({ name }, index) => {
                 <Link to={`/shift/${name}`} style={{ textDecoration: 'none' }} key={index} >
