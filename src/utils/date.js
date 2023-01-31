@@ -7,7 +7,7 @@ function getDates(startDate, endDate) {
   }
   return dates;
 }
-const start = new Date("2022-11-10");
+const start = new Date("2023-01-30");
 const end = new Date("2023-06-08");
 const dates = getDates(start, end);
 

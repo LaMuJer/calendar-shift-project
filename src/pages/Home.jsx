@@ -43,7 +43,7 @@ const Home = () => {
               key={index}
               className={
                 new Date().toLocaleDateString() ===
-                  new Date(i.date).toLocaleDateString() && "highlight"
+                  new Date(i.date).toLocaleDateString() ? "highlight" : ""
               }
             >
               <td>{new Date(i.date).toLocaleDateString()}</td>

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "../App.css";
 import { Box, Button, Stack, Typography } from "@mui/material";
-import { lists } from "../utils/constant";
 import CalendarModel from "../components/CalendarModel";
+import Descriptions from "../components/Descriptions";
 
 const Shift = () => {
+
   return (
     <Stack
       sx={{
@@ -27,31 +28,7 @@ const Shift = () => {
           <p style={{ fontSize: "10px" }}>Edit</p>
         </Button>
         <CalendarModel />
-        <Stack
-          direction={"row"}
-          sx={{
-            width: "100vw",
-            height: "20vh",
-            bgcolor: "yellow",
-            mt: "30px",
-          }}
-        >
-          {lists.map(({ shift, duration, icon }, index) => {
-            return (
-              <div key={index}>
-                <Typography variant="subtitle2" color="success">
-                  {shift}
-                </Typography>
-                <Typography variant="subtitle2" color="success">
-                  {duration}
-                </Typography>
-                <Typography variant="subtitle2" color="success">
-                  {React.createElement(icon)}
-                </Typography>
-              </div>
-            );
-          })}
-        </Stack>
+          <Descriptions />          
       </Box>
     </Stack>
   );
