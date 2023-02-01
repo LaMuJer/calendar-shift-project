@@ -25,9 +25,12 @@ const NavBar = () => {
   };
 
   const openModal = () => {
-    setmodal(!modal);
+    setmodal(true);
     setabout(false);
+    console.log('inside' + modal)
   };
+
+  console.log('outside' + modal)
 
   const openAbout = () => {
     setabout(!about);
@@ -86,9 +89,6 @@ const NavBar = () => {
           Shift D
         </Typography>
       </Link>
-      {/* <Button onClick={openModal}>
-
-            </Button> */}
       <List
         sx={{
           width: "100%",
@@ -119,7 +119,7 @@ const NavBar = () => {
           unmountOnExit
         >
           <List component="div">
-            <ListItemButton onClick={openModal}>
+            <ListItemButton onClick={openModal} >
               <Typography
                 sx={{ p: 0 }}
                 variant="body2"

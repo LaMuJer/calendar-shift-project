@@ -1,8 +1,17 @@
 import CancelIcon from '@mui/icons-material/Cancel';
+import { useRef } from 'react';
 
 const Modal = ({ display }) => {
+
+  const ref = useRef()
+  const handleClick = () => {
+    if (display) {
+      ref.current.style.display = 'none'
+    }
+  }
+
   return (
-    <div className="abtAndModalContainer ">
+    <div className="abtAndModalContainer " ref={ref}>
       <div className="modal-container centerDiv">
         <div style={{
           display: 'flex',
@@ -11,7 +20,7 @@ const Modal = ({ display }) => {
           justifyContent: 'center',
           position: 'relative'
         }}>
-          <CancelIcon style={{
+          <CancelIcon onClick={handleClick} style={{
             display: 'flex',
             justifyContent: 'end',
             position: 'absolute',
@@ -20,7 +29,7 @@ const Modal = ({ display }) => {
             cursor: 'pointer'
           }} />
           <h5 style={{ marginTop: '30px', marginBottom: '30px' }}>Disclaimer </h5>
-          <p>
+          <div style={{lineHeight: '1.8em'}}>
             <div>
               The information provided by ("we," "us," or "our") on
               <span style={{ margin: '0 10px' }}>
@@ -39,7 +48,7 @@ const Modal = ({ display }) => {
               SITE AND YOUR RELIANCE ON ANY INFORMATION ON THE SITE IS SOLELY AT YOUR
               OWN RISK.
             </div>
-          </p>
+          </div>
         </div>
       </div>
     </div>
