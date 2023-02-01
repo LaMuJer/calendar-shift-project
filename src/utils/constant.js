@@ -11,8 +11,8 @@ export const shifts = [
     // { name: 'About' },
 ]
 
-export const lists = [
-    { shift: 'Morning Shift', duration: '07:00 to 15:00', icon: LightModeRoundedIcon, style: '#fb8500' },
-    { shift: 'Night Shift', duration: '16:00 to 24:00', icon: NightlightRoundedIcon, style: '#023047' },
-    { shift: 'Off', duration: '', icon: NotInterestedRoundedIcon, style: '#e63946' },
-]
+// export const lists = [
+//     { shift: 'Morning Shift', duration: '07:00 to 15:00' },
+//     { shift: 'Night Shift', duration: '16:00 to 24:00' },
+//     { shift: 'Off', duration: '' },
+// ]

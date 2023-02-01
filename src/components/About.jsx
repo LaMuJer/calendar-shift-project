@@ -1,8 +1,10 @@
 const About = () => {
   return (
-    <div className="modal-container">
-      <h6>developed and managed by Pyay Hein SN#2582 </h6>
-      <h6>Contact mail : pyayhein@gmail.com</h6>
+    <div className="abtAndModalContainer ">
+      <div className="about-container centerDiv">
+        <h4>developed and managed by <b>Pyay Hein SN#2582</b> </h4>
+        <h4>Contact mail : pyayhein@gmail.com</h4>
+      </div>
     </div>
   );
 };

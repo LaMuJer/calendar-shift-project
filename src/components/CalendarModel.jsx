@@ -1,11 +1,6 @@
 import { useState, createElement } from "react";
 import Calendar from "react-calendar";
 
-// icons
-import LightModeRoundedIcon from "@mui/icons-material/LightModeRounded";
-import NightlightRoundedIcon from "@mui/icons-material/NightlightRounded";
-import NotInterestedRoundedIcon from "@mui/icons-material/NotInterestedRounded";
-
 // date
 import date from "../utils/date";
 
@@ -16,11 +11,6 @@ const CalendarModel = ({ shift }) => {
     console.log(value);
   };
 
-  const rangeValue = [];
-
-  const drillU = ({ activeStartDate, view }) =>
-    alert("Drilled up to: ", activeStartDate, view);
-
   console.log(date);
 
   const handleManageData = (param) => {
@@ -30,11 +20,41 @@ const CalendarModel = ({ shift }) => {
         new Date(param.date).toLocaleDateString()
       ) {
         if (x.assign[shift] == "Off") {
-          return createElement(NotInterestedRoundedIcon);
+          return <span style={{
+            width: '71.5px',
+            height: '83px',
+            position: 'absolute',
+            backgroundColor: '#e63946',
+            display: 'inline-block',
+            top: 0,
+            left: 0,
+            opacity: .2,
+          }
+          }></span >
         } else if (x.assign[shift] == "Morning") {
-          return createElement(LightModeRoundedIcon);
+          return <span style={{
+            width: '71.5px',
+            height: '83px',
+            position: 'absolute',
+            backgroundColor: '#fb8500',
+            display: 'inline-block',
+            top: 0,
+            left: 0,
+            opacity: .2,
+          }
+          }></span >
         } else if (x.assign[shift] == "Night") {
-          return createElement(NightlightRoundedIcon);
+          return <span style={{
+            width: '71.5px',
+            height: '83px',
+            position: 'absolute',
+            backgroundColor: '#023047',
+            display: 'inline-block',
+            top: 0,
+            left: 0,
+            opacity: .2,
+          }
+          }></span >
         }
       }
     }

@@ -1,12 +1,12 @@
-import React, { useState } from "react";
 import "../App.css";
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Box, Button, Stack } from "@mui/material";
 import CalendarModel from "../components/CalendarModel";
-import Descriptions from "../components/Descriptions";
 import { useParams } from "react-router-dom";
 
 const Shift = () => {
   const { id } = useParams();
+
+  console.log(id)
 
   return (
     <Stack
@@ -30,7 +30,7 @@ const Shift = () => {
           <p style={{ fontSize: "10px" }}>Edit</p>
         </Button>
         <CalendarModel shift={id} />
-        <Descriptions />
+        {/* <Descriptions /> */}
       </Box>
     </Stack>
   );
