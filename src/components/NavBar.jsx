@@ -27,10 +27,10 @@ const NavBar = () => {
   const openModal = () => {
     setmodal(true);
     setabout(false);
-    console.log('inside' + modal)
+    console.log("inside" + modal);
   };
 
-  console.log('outside' + modal)
+  console.log("outside" + modal);
 
   const openAbout = () => {
     setabout(!about);
@@ -119,7 +119,7 @@ const NavBar = () => {
           unmountOnExit
         >
           <List component="div">
-            <ListItemButton onClick={openModal} >
+            <ListItemButton onClick={openModal}>
               <Typography
                 sx={{ p: 0 }}
                 variant="body2"
@@ -143,7 +143,7 @@ const NavBar = () => {
         </Collapse>
       </List>
 
-      {modal ? <Modal display={modal} /> : ""}
+      {modal ? <Modal display={modal} handleAllClose={handleAllClose} /> : ""}
       {about ? <About display={about} /> : ""}
 
       {/* {shifts.map(({ name }, index) => {
