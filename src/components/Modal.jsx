@@ -4,7 +4,7 @@ import { useRef } from "react";
 const Modal = ({ display, handleAllClose }) => {
   const ref = useRef();
   const handleClick = () => {
-    if (display) {
+    if (display) { 
       ref.current.style.display = "none";
     } else {
       ref.current.style.display = "flex";

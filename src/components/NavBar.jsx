@@ -1,5 +1,5 @@
 import { Stack } from "@mui/system";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
 import { Button, Collapse, List, ListItemButton } from "@mui/material";
@@ -33,7 +33,7 @@ const NavBar = () => {
   console.log("outside" + modal);
 
   const openAbout = () => {
-    setabout(!about);
+    setabout(true);
     setmodal(false);
   };
 
@@ -48,12 +48,12 @@ const NavBar = () => {
         mt: "30px",
       }}
     >
-      <Link to={"/"} style={{ textDecoration: "none" }} className="active">
+      <NavLink to={"/"} style={{ textDecoration: "none" }} >
         <Typography variant="body2" className="link" color="initial">
           Home
         </Typography>
-      </Link>
-      <Link
+      </NavLink>
+      <NavLink
         onClick={handleAllClose}
         to={"/shift/A"}
         style={{ textDecoration: "none" }}
@@ -61,8 +61,8 @@ const NavBar = () => {
         <Typography variant="body2" className="link" color="initial">
           Shift A
         </Typography>
-      </Link>
-      <Link
+      </NavLink>
+      <NavLink
         onClick={handleAllClose}
         to={"/shift/B"}
         style={{ textDecoration: "none" }}
@@ -70,8 +70,8 @@ const NavBar = () => {
         <Typography variant="body2" className="link" color="initial">
           Shift B
         </Typography>
-      </Link>
-      <Link
+      </NavLink>
+      <NavLink
         onClick={handleAllClose}
         to={"/shift/C"}
         style={{ textDecoration: "none" }}
@@ -79,8 +79,8 @@ const NavBar = () => {
         <Typography variant="body2" className="link" color="initial">
           Shift C
         </Typography>
-      </Link>
-      <Link
+      </NavLink>
+      <NavLink
         onClick={handleAllClose}
         to={"/shift/D"}
         style={{ textDecoration: "none" }}
@@ -88,14 +88,14 @@ const NavBar = () => {
         <Typography variant="body2" className="link" color="initial">
           Shift D
         </Typography>
-      </Link>
+      </NavLink>
       <List
         sx={{
           width: "100%",
           maxWidth: 100,
           height: "40px",
           borderRadius: "20px",
-          bgcolor: "#caf0f8",
+          // bgcolor: "#caf0f8",
           padding: "0px",
         }}
         component="nav"
@@ -144,7 +144,7 @@ const NavBar = () => {
       </List>
 
       {modal ? <Modal display={modal} handleAllClose={handleAllClose} /> : ""}
-      {about ? <About display={about} /> : ""}
+      {about ? <About display={about} handleAllClose={handleAllClose} /> : ""}
 
       {/* {shifts.map(({ name }, index) => {
                 <Link to={`/shift/${name}`} style={{ textDecoration: 'none' }} key={index} >

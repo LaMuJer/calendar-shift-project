@@ -1,16 +1,17 @@
-import { useState, createElement } from "react";
+import { useState } from "react";
 import Calendar from "react-calendar";
 
 // date
 import date from "../utils/date";
+import ColorHighlight from "./ColorHighlight";
 
 const CalendarModel = ({ shift }) => {
   const [value, setValue] = useState(new Date());
   const [count, setCount] = useState(null);
 
-  const showOneDayOnly = (value) => {
-    console.log(value);
-  };
+  // const showOneDayOnly = (value) => {
+  //   console.log(value);
+  // };
 
   function countDays(date1, date2) {
     // Convert both dates to milliseconds
@@ -30,6 +31,7 @@ const CalendarModel = ({ shift }) => {
     const endDay = new Date(date[1]);
 
     setCount(countDays(startDay, endDay));
+    setValue(date)
   };
 
   const handleManageData = (param) => {
@@ -40,48 +42,15 @@ const CalendarModel = ({ shift }) => {
       ) {
         if (x.assign[shift] == "Off") {
           return (
-            <span
-              style={{
-                width: "71.5px",
-                height: "83px",
-                position: "absolute",
-                backgroundColor: "#e63946",
-                display: "inline-block",
-                top: 0,
-                left: 0,
-                opacity: 0.2,
-              }}
-            ></span>
+            <ColorHighlight bgColor={'#ffddd2'} />   
           );
         } else if (x.assign[shift] == "Morning") {
           return (
-            <span
-              style={{
-                width: "71.5px",
-                height: "83px",
-                position: "absolute",
-                backgroundColor: "#fb8500",
-                display: "inline-block",
-                top: 0,
-                left: 0,
-                opacity: 0.2,
-              }}
-            ></span>
-          );
+            <ColorHighlight bgColor={'#2ec4b6'} />                
+          )
         } else if (x.assign[shift] == "Night") {
           return (
-            <span
-              style={{
-                width: "71.5px",
-                height: "83px",
-                position: "absolute",
-                backgroundColor: "#023047",
-                display: "inline-block",
-                top: 0,
-                left: 0,
-                opacity: 0.2,
-              }}
-            ></span>
+            <ColorHighlight bgColor={'#ff4d6d'} />                
           );
         }
       }
@@ -96,9 +65,11 @@ const CalendarModel = ({ shift }) => {
         tileContent={handleManageData}
         selectRange={true}
         showNeighboringMonth={false}
-        onClickDay={showOneDayOnly}
+      // onClickDay={showOneDayOnly}
       />
-      <p>Date : {count ? count:"select date"}</p>
+      <div style={{ marginTop: '60px' }}>
+        <p>Date : {count ? count : "Select Date"}</p>
+      </div>
     </>
   );
 };

@@ -1,10 +1,7 @@
 import { Box } from "@mui/material";
-import { MenuOutlined } from "@mui/icons-material";
-import { useState } from "react";
 import data from "../utils/date";
 
 const Home = () => {
-  const [show, setshow] = useState();
 
   const date = new Date();
 
@@ -12,10 +9,6 @@ const Home = () => {
     date.toLocaleDateString(),
     date.toLocaleDateString("us", { weekday: "long" })
   );
-
-  // const handleshow = () {
-
-  // }
 
   return (
     <Box
@@ -26,11 +19,10 @@ const Home = () => {
         mt: "30px",
       }}
     >
-      <table className="shiftSheet">
-        <thead>
+      <table className="shiftSheet ">
+        <thead className="sticky" >
           <tr>
             <th>Date</th>
-            <th>Day</th>
             <th>Shift A</th>
             <th>Shift B</th>
             <th>Shift C</th>
@@ -45,10 +37,10 @@ const Home = () => {
                 new Date().toLocaleDateString() ===
                   new Date(i.date).toLocaleDateString() ? "highlight" : ""
               }
-            >
-              <td>{new Date(i.date).toLocaleDateString()}</td>
-              <td>
-                {new Date(i.date).toLocaleDateString("us", { weekday: "long" })}
+            > 
+              <td style={{display: 'flex', justifyContent:'start'}}>
+                <p style={{width: '100px'}}>{new Date(i.date).toLocaleDateString()}</p>
+                <p>{new Date(i.date).toLocaleDateString("us", { weekday: "long" })}</p>
               </td>
               <td>{i.assign.A}</td>
               <td>{i.assign.B}</td>
