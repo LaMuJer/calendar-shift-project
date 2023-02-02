@@ -8,6 +8,8 @@ import ColorHighlight from "./ColorHighlight";
 const CalendarModel = ({ shift }) => {
   const [value, setValue] = useState(new Date());
   const [count, setCount] = useState(null);
+  const [start, setStart] = useState(null);
+  const [end, setEnd] = useState(null);
 
   // const showOneDayOnly = (value) => {
   //   console.log(value);
@@ -29,9 +31,10 @@ const CalendarModel = ({ shift }) => {
     console.log(date);
     const startDay = new Date(date[0]);
     const endDay = new Date(date[1]);
-
+    setStart(startDay.toLocaleDateString());
+    setEnd(endDay.toLocaleDateString());
     setCount(countDays(startDay, endDay));
-    setValue(date)
+    setValue(date);
   };
 
   const handleManageData = (param) => {
@@ -41,17 +44,11 @@ const CalendarModel = ({ shift }) => {
         new Date(param.date).toLocaleDateString()
       ) {
         if (x.assign[shift] == "Off") {
-          return (
-            <ColorHighlight bgColor={'#ffddd2'} />
-          );
+          return <ColorHighlight bgColor={"#ffddd2"} />;
         } else if (x.assign[shift] == "Morning") {
-          return (
-            <ColorHighlight bgColor={'#2ec4b6'} />
-          )
+          return <ColorHighlight bgColor={"#2ec4b6"} />;
         } else if (x.assign[shift] == "Night") {
-          return (
-            <ColorHighlight bgColor={'#ff4d6d'} />
-          );
+          return <ColorHighlight bgColor={"#ff4d6d"} />;
         }
       }
     }
@@ -65,14 +62,16 @@ const CalendarModel = ({ shift }) => {
         tileContent={handleManageData}
         selectRange={true}
         showNeighboringMonth={false}
-      // onClickDay={showOneDayOnly}
+        // onClickDay={showOneDayOnly}
       />
-      <div style={{ marginTop: '60px' }}>
-        <p >
-          From <span className="selectedDateShow">Feb-20-2022</span>
+      <div style={{ marginTop: "60px" }}>
+        <p>
+          From{" "}
+          <span className="selectedDateShow">{start ? start : "_____"}</span>
           To
-          <span className="selectedDateShow">Feb-20-2022</span>
-          Total<span className="selectedDateShow">{count ? count : "0"} days</span>
+          <span className="selectedDateShow">{end ? end : "_____"}</span>
+          Total
+          <span className="selectedDateShow">{count ? count : "0"} days</span>
         </p>
       </div>
     </>
