@@ -68,7 +68,12 @@ const CalendarModel = ({ shift }) => {
       // onClickDay={showOneDayOnly}
       />
       <div style={{ marginTop: '60px' }}>
-        <p>Date : From --- To --- {count ? count : "Select Date"}</p>
+        <p >
+          From <span className="selectedDateShow">Feb-20-2022</span>
+          To
+          <span className="selectedDateShow">Feb-20-2022</span>
+          Total<span className="selectedDateShow">{count ? count : "0"} days</span>
+        </p>
       </div>
     </>
   );
