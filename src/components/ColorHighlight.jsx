@@ -1,18 +1,19 @@
-const ColorHighlight = ({bgColor}) => {
+const ColorHighlight = ({ bgColor }) => {
     return (
         <span
             style={{
-                width: "100%",
-                height: "100%",
-                position: "absolute",
-                zIndex: 0,
+                width: '55%',
+                height: '50%',
+                position: 'absolute',
+                zIndex: '0',
                 backgroundColor: `${bgColor}`,
-                display: "inline-block",
-                top: 0,
-                left: 0,
-                opacity: 1,
-            }}
-        ></span>
+                display: 'inline-block',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                borderRadius: '50%',
+}}
+        ></span >
     )
 }
 

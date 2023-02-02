@@ -1,6 +1,6 @@
 import CancelIcon from "@mui/icons-material/Cancel";
 import { useRef } from "react";
-import img from '../../public/img/dev.png'
+import img from '../../public/img/dev.jpg'
 
 const About = ({ display, handleAllClose }) => {
   const ref = useRef();

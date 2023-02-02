@@ -42,15 +42,15 @@ const CalendarModel = ({ shift }) => {
       ) {
         if (x.assign[shift] == "Off") {
           return (
-            <ColorHighlight bgColor={'#ffddd2'} />   
+            <ColorHighlight bgColor={'#ffddd2'} />
           );
         } else if (x.assign[shift] == "Morning") {
           return (
-            <ColorHighlight bgColor={'#2ec4b6'} />                
+            <ColorHighlight bgColor={'#2ec4b6'} />
           )
         } else if (x.assign[shift] == "Night") {
           return (
-            <ColorHighlight bgColor={'#ff4d6d'} />                
+            <ColorHighlight bgColor={'#ff4d6d'} />
           );
         }
       }
@@ -68,7 +68,7 @@ const CalendarModel = ({ shift }) => {
       // onClickDay={showOneDayOnly}
       />
       <div style={{ marginTop: '60px' }}>
-        <p>Date : {count ? count : "Select Date"}</p>
+        <p>Date : From --- To --- {count ? count : "Select Date"}</p>
       </div>
     </>
   );

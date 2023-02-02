@@ -7,7 +7,7 @@ const Home = () => {
 
   console.log(
     date.toLocaleDateString(),
-    date.toLocaleDateString("us", { weekday: "long" })
+    date.toLocaleDateString("en", { weekday: "long" })
   );
 
   return (
@@ -37,9 +37,15 @@ const Home = () => {
                 new Date().toLocaleDateString() ===
                   new Date(i.date).toLocaleDateString() ? "highlight" : ""
               }
-            > 
-              <td style={{display: 'flex', justifyContent:'start'}}>
-                <p style={{width: '100px'}}>{new Date(i.date).toLocaleDateString()}</p>
+            >
+              <td style={{ display: 'flex', justifyContent: 'start' }}>
+                <p style={{ width: '100px' }}>
+                  {new Date(i.date).toLocaleDateString("en-GB", {
+                    day: 'numeric',
+                    month: 'short',
+                    year: 'numeric'
+                  }).replace(/ /g , '-')}
+                </p>
                 <p>{new Date(i.date).toLocaleDateString("us", { weekday: "long" })}</p>
               </td>
               <td>{i.assign.A}</td>
