@@ -1,15 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 
 // date
 import date from "../utils/date";
 import ColorHighlight from "./ColorHighlight";
 
-const CalendarModel = ({ shift }) => {
+const CalendarModel = ({ shift, dater }) => {
   const [value, setValue] = useState(new Date());
   const [count, setCount] = useState(null);
   const [start, setStart] = useState(null);
   const [end, setEnd] = useState(null);
+  const [active, setActive] = useState(new Date());
 
   // const showOneDayOnly = (value) => {
   //   console.log(value);
@@ -54,13 +55,21 @@ const CalendarModel = ({ shift }) => {
     }
   };
 
+  useEffect(() => {
+    if (dater) {
+      setActive(new Date(dater))
+      // console.log(new Date(dater));
+    }
+  }, [dater]);
+
   return (
     <>
       <Calendar
         onChange={handleChange}
-        value={value}
+        value={active}
         tileContent={handleManageData}
         selectRange={true}
+        // activeStartDate={active}
         showNeighboringMonth={false}
         // onClickDay={showOneDayOnly}
       />

@@ -3,11 +3,18 @@ import { Box, Button, Stack } from "@mui/material";
 import CalendarModel from "../components/CalendarModel";
 import { useParams } from "react-router-dom";
 import GoTo from "../components/GoTo";
+import { useState } from "react";
 
 const Shift = () => {
   const { id } = useParams();
 
-  console.log(id);
+  const [date, setDate] = useState();
+
+  const handleChange = (day, month, year) => {
+    setDate(`${month}/${day}/${year}`);
+  };
+
+  console.log(date);
 
   return (
     <Stack
@@ -27,8 +34,8 @@ const Shift = () => {
           alignItems: "center",
         }}
       >
-        <GoTo />
-        <CalendarModel shift={id} />
+        <GoTo handleChange={handleChange} />
+        <CalendarModel shift={id} dater={date} />
       </Box>
     </Stack>
   );
