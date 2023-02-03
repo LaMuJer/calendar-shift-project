@@ -2,11 +2,12 @@ import "../App.css";
 import { Box, Button, Stack } from "@mui/material";
 import CalendarModel from "../components/CalendarModel";
 import { useParams } from "react-router-dom";
+import GoTo from "../components/GoTo";
 
 const Shift = () => {
   const { id } = useParams();
 
-  console.log(id)
+  console.log(id);
 
   return (
     <Stack
@@ -26,11 +27,8 @@ const Shift = () => {
           alignItems: "center",
         }}
       >
-        <Button variant="outlined" color="info" style={{ marginTop: "30px" }}>
-          <p style={{ fontSize: "10px" }}>Edit</p>
-        </Button>
+        <GoTo />
         <CalendarModel shift={id} />
-        {/* <Descriptions /> */}
       </Box>
     </Stack>
   );
