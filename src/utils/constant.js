@@ -16,3 +16,18 @@ export const shifts = [
 //     { shift: 'Night Shift', duration: '16:00 to 24:00' },
 //     { shift: 'Off', duration: '' },
 // ]
+
+export const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+];
