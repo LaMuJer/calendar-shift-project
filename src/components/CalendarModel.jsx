@@ -95,7 +95,11 @@ const CalendarModel = ({ shift, dater }) => {
   }, [dater]);
 
   const handleViewChange = ({ action, activeStartDate, value, view }) => {
-    setShow(false);
+    if (view !== "month") {
+      setShow(false);
+    } else {
+      setShow(true);
+    }
   };
 
   return (
