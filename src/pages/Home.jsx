@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import data from "../utils/date";
 
@@ -7,6 +7,37 @@ const Home = () => {
     count: 10,
     con: true,
   });
+  const [shift, setShift] = useState(null);
+  const [text, setText] = useState("");
+
+  const objLoop = (x, assignTime) => {
+    for (let k in x[0].assign) {
+      if (x[0].assign[k] === assignTime) {
+        console.log(k);
+        setShift(k);
+      }
+    }
+  };
+
+  useEffect(() => {
+    const date = new Date();
+    const utcTime = date.getTime() + date.getTimezoneOffset() * 60 * 1000;
+    const uaeTime = new Date(utcTime + 60 * 60 * 1000 * 4);
+    const currentTime = uaeTime.getHours();
+
+    const finder = data.filter(
+      (i) =>
+        new Date(i.date).toLocaleDateString() == new Date().toLocaleDateString()
+    );
+
+    if (currentTime >= 7 && currentTime < 19) {
+      setText("7 am to 7 pm shift was");
+      objLoop(finder, "Morning");
+    } else {
+      setText("7 pm to 7 am shift was");
+      objLoop(finder, "Night");
+    }
+  }, []);
 
   const date = data.filter((i) => {
     let tomorrow = new Date(i.date).getTime() + 24 * 60 * 60 * 1000;
@@ -40,6 +71,9 @@ const Home = () => {
         flexDirection: "column",
       }}
     >
+      <h1 style={{ color: "white" }}>
+        {text} - {shift}
+      </h1>
       <table className="shiftSheet ">
         <thead className="sticky">
           <tr>
@@ -78,14 +112,19 @@ const Home = () => {
         </tbody>
       </table>
 
-      {loadMore.con &&
-        <Button onClick={handleLoadMore} variant="contained" sx={{
-          bgcolor: '#20a4f3',
-          textTransform: 'capitalize',
-          mt: '30px'
-        }}>
+      {loadMore.con && (
+        <Button
+          onClick={handleLoadMore}
+          variant="contained"
+          sx={{
+            bgcolor: "#20a4f3",
+            textTransform: "capitalize",
+            mt: "30px",
+          }}
+        >
           Load More
-        </Button>}
+        </Button>
+      )}
     </Box>
   );
 };
