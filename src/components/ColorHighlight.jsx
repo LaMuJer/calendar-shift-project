@@ -1,14 +1,9 @@
-const ColorHighlight = ({ bgColor, shift }) => {
+const ColorHighlight = ({ bgColor, shift, active }) => {
+    const classNames = ['react-calendar__month-view__days__day']
     return (
         <div style={{
-            width: '100%',
-            height: '100%',
-            position: 'absolute',
-            zIndex: '0',
-            display: 'inline-block',
-            top: '0',
-            left: '0',
-        }}>
+            opacity: '0'
+        }} className={active ? 'highlightsDisplayNone' : ''} >
             <span
                 style={{
                     width: '42%',
@@ -23,6 +18,24 @@ const ColorHighlight = ({ bgColor, shift }) => {
                     borderRadius: '50%',
                 }}
             ></span >
+            {/* {classNames.some(className => document.body.classList.contains(className)) && (
+                <span style={{
+                    width: '100%',
+                    height: '10%',
+                    position: 'absolute',
+                    zIndex: '0',
+                    backgroundColor: `${bgColor}`,
+                    display: 'inline-block',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    borderRadius: '50%',
+                }} className='react-calendar__month-view__days__day'
+                >
+                    {shift}
+                </span>
+            )} */}
+
             <span style={{
                 width: '100%',
                 height: '10%',
@@ -33,9 +46,11 @@ const ColorHighlight = ({ bgColor, shift }) => {
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
                 color: '#ffffffae'
-            }}>
+            }} 
+            >
                 {shift}
             </span>
+
         </div>
     )
 }

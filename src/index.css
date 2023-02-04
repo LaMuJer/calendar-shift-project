@@ -87,7 +87,9 @@ table.shiftSheet thead th {
   background-color: #2ec4b6;
   font-weight: 700;
 }
-.highlight td p, .highlight td{
+
+.highlight td p,
+.highlight td {
   color: #011627 !important;
 }
 
@@ -145,6 +147,33 @@ table.shiftSheet thead th {
   position: relative;
   overflow: hidden;
 }
+
+.highlightsDisplayNone {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 0;
+  display: inline-block;
+  top: 0;
+  left: 0;
+  opacity: 1 !important;
+}
+
+.shiftTextDisplayNone {
+  width: 100%;
+  height: 10%;
+  position: absolute;
+  z-index: 0;
+  display: inline-block;
+  bottom: 12%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffffae;
+  opacity: 1 !important;
+  /* background-color: rgb(149, 29, 29); */
+  
+}
+/* react-calendar__year-view__months__month */
 
 .selectedDateShow {
   background-color: #20a4f3;

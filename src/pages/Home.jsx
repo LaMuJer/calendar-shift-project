@@ -31,10 +31,10 @@ const Home = () => {
     );
 
     if (currentTime >= 7 && currentTime < 19) {
-      setText("7 am to 7 pm shift was");
+      setText("Current shift is");
       objLoop(finder, "Morning");
     } else {
-      setText("7 pm to 7 am shift was");
+      setText("Current shift is");
       objLoop(finder, "Night");
     }
   }, []);
@@ -51,7 +51,6 @@ const Home = () => {
   };
 
   useEffect(() => {
-    console.log();
 
     if (
       new Date(date[date.length - 1].date).getTime() ===
@@ -71,7 +70,7 @@ const Home = () => {
         flexDirection: "column",
       }}
     >
-      <h1 style={{ color: "white" }}>
+      <h1 style={{ color: "white", marginBottom: '10px' }}>
         {text} - {shift}
       </h1>
       <table className="shiftSheet ">
