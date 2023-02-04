@@ -11,6 +11,7 @@ const CalendarModel = ({ shift, dater }) => {
   const [start, setStart] = useState(null);
   const [end, setEnd] = useState(null);
   const [active, setActive] = useState(new Date());
+  const [show, setShow] = useState(true);
 
   // const showOneDayOnly = (value) => {
   //   console.log(value);
@@ -29,10 +30,22 @@ const CalendarModel = ({ shift, dater }) => {
   }
 
   const handleChange = (date) => {
-    const startDay = new Date(date[0])
+    const startDay = new Date(date[0]);
     const endDay = new Date(date[1]);
-    setStart(startDay.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }));
-    setEnd(endDay.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }));
+    setStart(
+      startDay.toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      })
+    );
+    setEnd(
+      endDay.toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      })
+    );
     setCount(countDays(startDay, endDay));
     setValue(date);
   };
@@ -43,12 +56,32 @@ const CalendarModel = ({ shift, dater }) => {
         new Date(x.date).toLocaleDateString() ==
         new Date(param.date).toLocaleDateString()
       ) {
-        if (x.assign[shift] == "Off") {
-          return <ColorHighlight active={'react-calendar__month-view__days__day'} bgColor={"#ffee32"} shift={x.assign[shift]}  />;
-        } else if (x.assign[shift] == "Morning") {
-          return <ColorHighlight active={'react-calendar__month-view__days__day'} bgColor={"#6fffe9"} shift={x.assign[shift]} />;
-        } else if (x.assign[shift] == "Night") {
-          return <ColorHighlight active={'react-calendar__month-view__days__day'} bgColor={"#e71d36"} shift={x.assign[shift]} />;
+        if (show) {
+          if (x.assign[shift] == "Off") {
+            return (
+              <ColorHighlight
+                active={"react-calendar__month-view__days__day"}
+                bgColor={"#ffee32"}
+                shift={x.assign[shift]}
+              />
+            );
+          } else if (x.assign[shift] == "Morning") {
+            return (
+              <ColorHighlight
+                active={"react-calendar__month-view__days__day"}
+                bgColor={"#6fffe9"}
+                shift={x.assign[shift]}
+              />
+            );
+          } else if (x.assign[shift] == "Night") {
+            return (
+              <ColorHighlight
+                active={"react-calendar__month-view__days__day"}
+                bgColor={"#e71d36"}
+                shift={x.assign[shift]}
+              />
+            );
+          }
         }
       }
     }
@@ -56,10 +89,14 @@ const CalendarModel = ({ shift, dater }) => {
 
   useEffect(() => {
     if (dater) {
-      setActive(new Date(dater))
+      setActive(new Date(dater));
       // console.log(new Date(dater));
     }
   }, [dater]);
+
+  const handleViewChange = ({ action, activeStartDate, value, view }) => {
+    setShow(false);
+  };
 
   return (
     <>
@@ -68,12 +105,14 @@ const CalendarModel = ({ shift, dater }) => {
         value={active}
         tileContent={handleManageData}
         selectRange={true}
+        // showNavigation={false}
+        onViewChange={handleViewChange}
         // activeStartDate={active}
         showNeighboringMonth
-      // onClickDay={showOneDayOnly}
+        // onClickDay={showOneDayOnly}
       />
       <div style={{ marginTop: "100px" }}>
-        <p style={{ color: '#ffffff90' }}>
+        <p style={{ color: "#ffffff90" }}>
           From{" "}
           <span className="selectedDateShow">{start ? start : "_____"}</span>
           To
