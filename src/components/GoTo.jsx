@@ -39,7 +39,7 @@ const GoTo = ({ handleChange }) => {
   }
 
   let yearCounts = [];
-  for (let i = 2022; i < 2025; i++) {
+  for (let i = 2022; i < 2026; i++) {
     yearCounts.push(i);
   }
 
@@ -58,13 +58,7 @@ const GoTo = ({ handleChange }) => {
   console.log(countDate);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-      }}
-    >
+    <div className="gotoContainer"        >
       <div
         style={{
           display: "flex",
@@ -74,24 +68,31 @@ const GoTo = ({ handleChange }) => {
       >
         {/* Day */}
 
-        <Box sx={{ minWidth: 120 }}>
-          <FormControl fullWidth>
-            <InputLabel id="day">Day</InputLabel>
+        <Box sx={{ minWidth: 120, mr: '10px' }}>
+          <FormControl fullWidth >
+            <InputLabel id="day" style={{ color: '#ffffffaa', top: '-30%' }}>Day</InputLabel>
             <Select
               labelId="day"
+              multiline
               id="daySelectId"
               value={day}
               label="Day"
               onChange={handleDay}
+              sx={{
+                backgroundColor: 'rgba(17, 25, 40, 0.75)',
+                backdropFilter: 'blur(16px) saturate(180%)',
+                WebkitBackdropFilter: 'blur(16px) saturate(180%)',
+                borderRadius: '30px', height: '30px', color: '#fff'
+              }}
             >
               {month && year ? (
                 countDate?.map((c, index) => (
-                  <MenuItem key={index} value={c}>
+                  <MenuItem key={index} value={c} style={{ backgroundColor: '#000', color: '#fff' }}>
                     {c}
                   </MenuItem>
                 ))
               ) : (
-                <MenuItem value={"Select Year"}>Select Month and Year</MenuItem>
+                <MenuItem value={"Select Year"} disabled style={{ backgroundColor: '#000', color: '#fff' }}>Select Month and Year</MenuItem>
               )}
             </Select>
           </FormControl>
@@ -99,18 +100,24 @@ const GoTo = ({ handleChange }) => {
 
         {/* Month */}
 
-        <Box sx={{ minWidth: 120 }}>
-          <FormControl fullWidth>
-            <InputLabel id="month">Month</InputLabel>
+        <Box sx={{ minWidth: 120, mr: '10px'  }}>
+          <FormControl fullWidth >
+            <InputLabel id="month" style={{ color: '#ffffffaa', top: '-40%' }}>Month</InputLabel>
             <Select
               labelId="month"
               id="monthSelectId"
               value={month}
               label="Month"
               onChange={handleMonth}
+              sx={{
+                backgroundColor: 'rgba(17, 25, 40, 0.75)',
+                backdropFilter: 'blur(16px) saturate(180%)',
+                WebkitBackdropFilter: 'blur(16px) saturate(180%)',
+                borderRadius: '30px', height: '30px', color: '#fff'
+              }}
             >
               {months.map((c, index) => (
-                <MenuItem key={c.id} value={c.id}>
+                <MenuItem key={c.id} value={c.id} style={{ backgroundColor: '#000', color: '#fff' }}>
                   {c.name}
                 </MenuItem>
               ))}
@@ -120,18 +127,24 @@ const GoTo = ({ handleChange }) => {
 
         {/* year */}
 
-        <Box sx={{ minWidth: 120 }}>
+        <Box sx={{ minWidth: 120, mr: '30px'  }}>
           <FormControl fullWidth>
-            <InputLabel id="year">Year</InputLabel>
+            <InputLabel id="year" style={{ color: '#ffffffaa', top: '-40%' }}>Year</InputLabel>
             <Select
               labelId="year"
               id="yearSelectId"
               value={year}
               label="Year"
               onChange={handleYear}
+              sx={{
+                backgroundColor: 'rgba(17, 25, 40, 0.75)',
+                backdropFilter: 'blur(16px) saturate(180%)',
+                WebkitBackdropFilter: 'blur(16px) saturate(180%)',
+                borderRadius: '30px', height: '30px', color: '#fff'
+              }}
             >
               {yearCounts.map((c, index) => (
-                <MenuItem key={index} value={c}>
+                <MenuItem key={index} value={c} style={{ backgroundColor: '#000000', color: '#fff' }}>
                   {c}
                 </MenuItem>
               ))}
@@ -139,7 +152,10 @@ const GoTo = ({ handleChange }) => {
           </FormControl>
         </Box>
         <div>
-          <Button variant="contained" color="info" onClick={handleClick}>
+          <Button variant="contained" style={{
+            backgroundColor: '#20a4f3', textTransform: 'capitalize',
+            padding: '5px 2px'
+          }} onClick={handleClick}>
             Go To
           </Button>
         </div>

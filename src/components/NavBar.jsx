@@ -27,10 +27,7 @@ const NavBar = () => {
   const openModal = () => {
     setmodal(true);
     setabout(false);
-    console.log("inside" + modal);
   };
-
-  console.log("outside" + modal);
 
   const openAbout = () => {
     setabout(true);
@@ -46,11 +43,12 @@ const NavBar = () => {
         justifyContent: "center",
         alignItems: "center",
         mt: "30px",
+        position: 'relative'
       }}
     >
-      <NavLink to={"/"} style={{ textDecoration: "none" }} >
+      <NavLink to={"/"} style={{ textDecoration: "none", }} >
         <Typography variant="body2" className="link" color="initial">
-          Home
+          <p style={{ padding: 0, color: '#f6f7f8' }}>Home</p>
         </Typography>
       </NavLink>
       <NavLink
@@ -59,7 +57,7 @@ const NavBar = () => {
         style={{ textDecoration: "none" }}
       >
         <Typography variant="body2" className="link" color="initial">
-          Shift A
+          <p style={{ padding: 0, color: '#f6f7f8' }}>Shift A</p>
         </Typography>
       </NavLink>
       <NavLink
@@ -68,7 +66,7 @@ const NavBar = () => {
         style={{ textDecoration: "none" }}
       >
         <Typography variant="body2" className="link" color="initial">
-          Shift B
+          <p style={{ padding: 0, color: '#f6f7f8' }}>Shift B</p>
         </Typography>
       </NavLink>
       <NavLink
@@ -77,7 +75,7 @@ const NavBar = () => {
         style={{ textDecoration: "none" }}
       >
         <Typography variant="body2" className="link" color="initial">
-          Shift C
+          <p style={{ padding: 0, color: '#f6f7f8' }}>Shift C</p>
         </Typography>
       </NavLink>
       <NavLink
@@ -86,7 +84,7 @@ const NavBar = () => {
         style={{ textDecoration: "none" }}
       >
         <Typography variant="body2" className="link" color="initial">
-          Shift D
+          <p style={{ padding: 0, color: '#f6f7f8' }}>Shift D</p>
         </Typography>
       </NavLink>
       <List
@@ -97,6 +95,8 @@ const NavBar = () => {
           borderRadius: "20px",
           // bgcolor: "#caf0f8",
           padding: "0px",
+          position: 'absolute',
+          right: '2%'
         }}
         component="nav"
         aria-labelledby="subheader"
@@ -106,11 +106,11 @@ const NavBar = () => {
             sx={{ p: 0 }}
             variant="body2"
             className="link"
-            color="initial"
+          // color="initial"
           >
-            More
+            <p style={{ padding: 0, color: '#f6f7f8' }}>More</p>
           </Typography>
-          {open ? <ExpandLess /> : <ExpandMore />}
+          {open ? <ExpandLess style={{ padding: 0, color: '#f6f7f8' }} /> : <ExpandMore style={{ padding: 0, color: '#f6f7f8' }} />}
         </ListItemButton>
         <Collapse
           style={{ backgroundColor: "white" }}

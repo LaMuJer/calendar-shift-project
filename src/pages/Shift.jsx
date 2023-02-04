@@ -14,16 +14,17 @@ const Shift = () => {
     setDate(`${month}/${day}/${year}`);
   };
 
-  console.log(date);
 
   return (
     <Stack
       sx={{
         width: "100vw",
-        height: "100vh",
+        height: "100%",
         display: "flex",
         justifyContent: "start",
         alignItems: "center",
+        padding: '10px 0',
+        overflow: 'hidden'
       }}
     >
       <Box

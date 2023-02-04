@@ -1,6 +1,6 @@
 import CancelIcon from "@mui/icons-material/Cancel";
 import { useRef } from "react";
-import img from '../../public/img/dev.jpg'
+import img from '../../public/img/dev1.jpg'
 
 const About = ({ display, handleAllClose }) => {
   const ref = useRef();
@@ -35,25 +35,31 @@ const About = ({ display, handleAllClose }) => {
           }}>
             <div style={{
               position: 'relative',
-              width: '400px',
-              height: '100%',
+              width: '200px',
+              height: '200px',
+              borderRadius: '50%',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: '0 40%',
             }}>
               <img style={{
                 width: '100%',
                 height: '100%',
-                borderRadius: '25px'
+                borderRadius: '50%',
+                objectFit: 'cover',
+                backgroundPosition: '0 40%',
+                // borderRadius: '25px'
               }} src={img} alt="dev" />
             </div>
           </div>
           <div style={{
-            padding: '0 30px'
+            padding: '10px 40px',
           }}>
-            <h2 style={{ marginTop: '30px', marginBottom: '10px' }} >Developed and managed by <br /> <b>Pyay Hein SN#2582</b> </h2>
+            <h2 style={{ marginTop: '30px', marginBottom: '30px' }} >Developed and managed by <br /> <b>Pyay Hein SN#2582</b> </h2>
             <h2>
               Contact mail :
               <a style={{ marginLeft: '10px' }} href="mailto:pyayhein@gmail.com">pyayhein@gmail.com</a>
             </h2>
-            <p style={{ marginTop: '10px' }}>Version 1.0</p>
+            <p style={{ marginTop: '50px' }}>Version 1.0</p>
           </div>
         </div>
       </div>

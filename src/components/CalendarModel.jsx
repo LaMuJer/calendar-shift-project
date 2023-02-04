@@ -29,7 +29,6 @@ const CalendarModel = ({ shift, dater }) => {
   }
 
   const handleChange = (date) => {
-    console.log(date);
     const startDay = new Date(date[0]);
     const endDay = new Date(date[1]);
     setStart(startDay.toLocaleDateString());
@@ -45,11 +44,11 @@ const CalendarModel = ({ shift, dater }) => {
         new Date(param.date).toLocaleDateString()
       ) {
         if (x.assign[shift] == "Off") {
-          return <ColorHighlight bgColor={"#ffddd2"} />;
+          return <ColorHighlight bgColor={"#ffee32"} shift={x.assign[shift]} />;
         } else if (x.assign[shift] == "Morning") {
-          return <ColorHighlight bgColor={"#2ec4b6"} />;
+          return <ColorHighlight bgColor={"#6fffe9"} shift={x.assign[shift]}  />;
         } else if (x.assign[shift] == "Night") {
-          return <ColorHighlight bgColor={"#ff4d6d"} />;
+          return <ColorHighlight bgColor={"#e71d36"} shift={x.assign[shift]}  />;
         }
       }
     }
@@ -70,11 +69,11 @@ const CalendarModel = ({ shift, dater }) => {
         tileContent={handleManageData}
         selectRange={true}
         // activeStartDate={active}
-        showNeighboringMonth={false}
+        showNeighboringMonth
         // onClickDay={showOneDayOnly}
       />
-      <div style={{ marginTop: "60px" }}>
-        <p>
+      <div style={{ marginTop: "100px" }}>
+        <p style={{color: '#ffffff90'}}>
           From{" "}
           <span className="selectedDateShow">{start ? start : "_____"}</span>
           To

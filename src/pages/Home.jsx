@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import data from "../utils/date";
 
@@ -36,7 +36,7 @@ const Home = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        mt: "30px",
+        mt: "60px",
         flexDirection: "column",
       }}
     >
@@ -78,7 +78,14 @@ const Home = () => {
         </tbody>
       </table>
 
-      {loadMore.con && <button onClick={handleLoadMore}>Load More</button>}
+      {loadMore.con &&
+        <Button onClick={handleLoadMore} variant="contained" sx={{
+          bgcolor: '#20a4f3',
+          textTransform: 'capitalize',
+          mt: '30px'
+        }}>
+          Load More
+        </Button>}
     </Box>
   );
 };

@@ -6,9 +6,9 @@ function getDates(startDate, endDate) {
     currentDate.setDate(currentDate.getDate() + 1);
   }
   return dates;
-}
+}       
 const start = new Date("2022-11-10");
-const end = new Date("2023-06-08");
+const end = new Date("2025-12-31");
 const dates = getDates(start, end);
 
 const assignOne = { A: "Off", B: "Morning", C: "Night", D: "Off" };

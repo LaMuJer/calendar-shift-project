@@ -18,7 +18,7 @@ p {
 html,
 body,
 #root {
-  background-color: #fefefe;
+  background-color: #011627;
   width: 100vw;
   height: 100vh;
   overflow-x: hidden;
@@ -30,18 +30,22 @@ body,
   padding: 10px 20px;
   margin: 0 20px;
   text-decoration: "none";
+  color: #000 !important;
 }
 
 th {
   position: sticky;
   top: 0;
-  background-color: #fefae0;
+  background-color: transparent;
+  color: #fdfffc !important;
   box-shadow: 0 2px 2px -1px rgba(0, 0, 0);
 }
 
 table {
+  max-width: 500px;
   height: 100%;
   position: relative;
+  background-color: #011627;
 }
 
 table.shiftSheet {
@@ -59,6 +63,7 @@ table.shiftSheet th {
 table.shiftSheet tbody td {
   font-size: 13px;
   padding: 10px 5px;
+  color: #fdfffc;
 }
 
 table.shiftSheet thead {
@@ -73,22 +78,25 @@ table.shiftSheet thead th {
 }
 
 .active {
-  background-color: #caf0f8;
+  background-color: #20a4f3;
   border-radius: 20px;
   outline: none;
 }
 
 .highlight {
-  background-color: rgb(234, 255, 0, 0.7);
+  background-color: #2ec4b6;
   font-weight: 700;
+}
+.highlight td p, .highlight td{
+  color: #011627 !important;
 }
 
 .abtAndModalContainer {
-  width: 100%;
-  height: 100%;
-  background-color: #00000070;
+  width: 100vw;
+  height: 100vh;
+  /* background-color: #00000070; */
   position: absolute;
-  top: 0;
+  top: -100%;
   left: 0;
   right: 0;
   bottom: 0;
@@ -112,8 +120,8 @@ table.shiftSheet thead th {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #caf0f8;
-  color: #000;
+  background-color: #001219;
+  color: #f8f9fa;
 }
 
 .modal-container h6 {
@@ -129,12 +137,8 @@ table.shiftSheet thead th {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #caf0f8;
-  color: #000;
-}
-
-.about-container h4 {
-  margin-bottom: 10px;
+  background-color: #001219;
+  color: #f8f9fa;
 }
 
 .react-calendar__month-view__days button {
@@ -143,9 +147,26 @@ table.shiftSheet thead th {
 }
 
 .selectedDateShow {
-  background-color: #caf0f8;
-  padding: 10px 20px;
+  background-color: #20a4f3;
+  padding: 5px 30px;
   border-radius: 30px;
   margin: 0 10px;
   font-weight: 500;
+  color: #000;
+}
+
+ul {
+  padding: 0 !important;
+  max-height: 20vh;
+  overflow: scroll;
+}
+
+.gotoContainer {
+  margin-top: 60px;
+  /* margin-left: 50px; */
+  width: 500px;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
