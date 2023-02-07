@@ -52,7 +52,7 @@ const NavBar = () => {
     >
       <NavLink to={"/"} style={{ textDecoration: "none", }} >
         <Typography variant="body2" className="link" color="initial">
-          <p style={{ padding: 0, color: '#f6f7f8' }}>Home</p>
+          <span style={{ padding: 0, color: '#f6f7f8' }}>Home</span>
         </Typography>
       </NavLink>
       <NavLink
@@ -61,7 +61,7 @@ const NavBar = () => {
         style={{ textDecoration: "none" }}
       >
         <Typography variant="body2" className="link" color="initial">
-          <p style={{ padding: 0, color: '#f6f7f8' }}><span className="shiftDisplay">Shift </span> A</p>
+          <span style={{ padding: 0, color: '#f6f7f8' }}><span className="shiftDisplay">Shift </span> A</span>
         </Typography>
       </NavLink>
       <NavLink
@@ -70,7 +70,7 @@ const NavBar = () => {
         style={{ textDecoration: "none" }}
       >
         <Typography variant="body2" className="link" color="initial">
-          <p style={{ padding: 0, color: '#f6f7f8' }}><span className="shiftDisplay">Shift </span> B</p>
+          <span style={{ padding: 0, color: '#f6f7f8' }}><span className="shiftDisplay">Shift </span> B</span>
         </Typography>
       </NavLink>
       <NavLink
@@ -79,7 +79,7 @@ const NavBar = () => {
         style={{ textDecoration: "none" }}
       >
         <Typography variant="body2" className="link" color="initial">
-          <p style={{ padding: 0, color: '#f6f7f8' }}><span className="shiftDisplay">Shift </span> C</p>
+          <span style={{ padding: 0, color: '#f6f7f8' }}><span className="shiftDisplay">Shift </span> C</span>
         </Typography>
       </NavLink>
       <NavLink
@@ -88,7 +88,7 @@ const NavBar = () => {
         style={{ textDecoration: "none" }}
       >
         <Typography variant="body2" className="link" color="initial">
-          <p style={{ padding: 0, color: '#f6f7f8' }}><span className="shiftDisplay">Shift </span> D</p>
+          <span style={{ padding: 0, color: '#f6f7f8' }}><span className="shiftDisplay">Shift </span> D</span>
         </Typography>
       </NavLink>
       <List
@@ -112,7 +112,7 @@ const NavBar = () => {
             className="link"
           // color="initial"
           >
-            <p style={{ padding: 0, color: '#f6f7f8' }}>More</p>
+            <span style={{ padding: 0, color: '#f6f7f8' }}>More</span>
           </Typography>
           {open ? <ExpandLess style={{ padding: 0, color: '#f6f7f8' }} /> : <ExpandMore style={{ padding: 0, color: '#f6f7f8' }} />}
         </ListItemButton>
