@@ -1,5 +1,6 @@
 import { Box, Button } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { Context } from "../Store/LoadingStore";
 import data from "../utils/date";
 
 const Home = () => {
@@ -10,11 +11,11 @@ const Home = () => {
   const [shift, setShift] = useState(null);
   const [text, setText] = useState("");
   const [text1, setText1] = useState("");
+  const { handleStopLoading, loading } = useContext(Context);
 
   const objLoop = (x, assignTime) => {
     for (let k in x[0].assign) {
       if (x[0].assign[k] === assignTime) {
-        console.log(k);
         setShift(k);
       }
     }
@@ -40,6 +41,7 @@ const Home = () => {
       objLoop(finder, "Night");
       setText1("is working till 7am");
     }
+    handleStopLoading();
   }, []);
 
   const date = data.filter((i) => {
@@ -54,7 +56,6 @@ const Home = () => {
   };
 
   useEffect(() => {
-
     if (
       new Date(date[date.length - 1].date).getTime() ===
       new Date(data[data.length - 1].date).getTime()
@@ -73,59 +74,68 @@ const Home = () => {
         flexDirection: "column",
       }}
     >
-      <h1 style={{ color: "white", marginBottom: '10px' }} className='shiftText'>
-        {text} - {shift}  {text1}
-      </h1>
-      <table >
-        <thead className="sticky">
-          <tr>
-            <th>Date</th>
-            <th>Shift A</th>
-            <th>Shift B</th>
-            <th>Shift C</th>
-            <th>Shift D</th>
-          </tr>
-        </thead>
-        <tbody>
-          {date.map((i, index) => (
-            <tr key={index} className={index === 0 ? "highlight" : ""}>
-              <td style={{ display: "flex", justifyContent: "start" }}>
-                <p style={{ width: "100px" }}>
-                  {new Date(i.date)
-                    .toLocaleDateString("en-GB", {
-                      day: "numeric",
-                      month: "short",
-                      year: "numeric",
-                    })
-                    .replace(/ /g, "-")}
-                </p>
-                <p>
-                  {new Date(i.date).toLocaleDateString("us", {
-                    weekday: "short",
-                  })}
-                </p>
-              </td>
-              <td>{i.assign.A}</td>
-              <td>{i.assign.B}</td>
-              <td>{i.assign.C}</td>
-              <td>{i.assign.D}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {loading ? (
+        <h1>loading...</h1>
+      ) : (
+        <>
+          <h1
+            style={{ color: "white", marginBottom: "10px" }}
+            className="shiftText"
+          >
+            {text} - {shift} {text1}
+          </h1>
+          <table>
+            <thead className="sticky">
+              <tr>
+                <th>Date</th>
+                <th>Shift A</th>
+                <th>Shift B</th>
+                <th>Shift C</th>
+                <th>Shift D</th>
+              </tr>
+            </thead>
+            <tbody>
+              {date.map((i, index) => (
+                <tr key={index} className={index === 0 ? "highlight" : ""}>
+                  <td style={{ display: "flex", justifyContent: "start" }}>
+                    <p style={{ width: "100px" }}>
+                      {new Date(i.date)
+                        .toLocaleDateString("en-GB", {
+                          day: "numeric",
+                          month: "short",
+                          year: "numeric",
+                        })
+                        .replace(/ /g, "-")}
+                    </p>
+                    <p>
+                      {new Date(i.date).toLocaleDateString("us", {
+                        weekday: "short",
+                      })}
+                    </p>
+                  </td>
+                  <td>{i.assign.A}</td>
+                  <td>{i.assign.B}</td>
+                  <td>{i.assign.C}</td>
+                  <td>{i.assign.D}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
 
-      {loadMore.con && (
-        <Button
-          onClick={handleLoadMore}
-          variant="contained"
-          sx={{
-            bgcolor: "#20a4f3",
-            textTransform: "capitalize",
-            mt: "30px",
-          }}
-        >
-          Load More
-        </Button>
+          {loadMore.con && (
+            <Button
+              onClick={handleLoadMore}
+              variant="contained"
+              sx={{
+                bgcolor: "#20a4f3",
+                textTransform: "capitalize",
+                mt: "30px",
+              }}
+            >
+              Load More
+            </Button>
+          )}
+        </>
       )}
     </Box>
   );

@@ -1,16 +1,19 @@
 import { Stack } from "@mui/system";
 import { NavLink } from "react-router-dom";
 import Typography from "@mui/material/Typography";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Button, Collapse, List, ListItemButton } from "@mui/material";
 import Modal from "./Modal";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import About from "./About";
+import { Context } from "../Store/LoadingStore";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
   const [about, setabout] = useState(false);
   const [modal, setmodal] = useState(false);
+
+  const { loading, handleStartLoading } = useContext(Context);
 
   const handleClick = (e) => {
     setOpen(!open);
@@ -19,6 +22,13 @@ const NavBar = () => {
   };
 
   const handleAllClose = () => {
+    setOpen(false);
+    setabout(false);
+    setmodal(false);
+    handleStartLoading();
+  };
+
+  const handleAllClose2 = () => {
     setOpen(false);
     setabout(false);
     setmodal(false);
@@ -39,20 +49,25 @@ const NavBar = () => {
       direction={"row"}
       sx={{
         width: "100vw",
-        height: '100px',
+        height: "100px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         p: "30px",
-        position: 'sticky',
-        top: '0%',
-        zIndex: '3',
-        bgcolor: '#011627'
-      }} className='start'
+        position: "sticky",
+        top: "0%",
+        zIndex: "3",
+        bgcolor: "#011627",
+      }}
+      className="start"
     >
-      <NavLink to={"/"} style={{ textDecoration: "none", }} >
+      <NavLink
+        to={"/"}
+        onClick={handleAllClose}
+        style={{ textDecoration: "none" }}
+      >
         <Typography variant="body2" className="link" color="initial">
-          <span style={{ padding: 0, color: '#f6f7f8' }}>Home</span>
+          <span style={{ padding: 0, color: "#f6f7f8" }}>Home</span>
         </Typography>
       </NavLink>
       <NavLink
@@ -61,7 +76,9 @@ const NavBar = () => {
         style={{ textDecoration: "none" }}
       >
         <Typography variant="body2" className="link" color="initial">
-          <span style={{ padding: 0, color: '#f6f7f8' }}><span className="shiftDisplay">Shift </span> A</span>
+          <span style={{ padding: 0, color: "#f6f7f8" }}>
+            <span className="shiftDisplay">Shift </span> A
+          </span>
         </Typography>
       </NavLink>
       <NavLink
@@ -70,7 +87,9 @@ const NavBar = () => {
         style={{ textDecoration: "none" }}
       >
         <Typography variant="body2" className="link" color="initial">
-          <span style={{ padding: 0, color: '#f6f7f8' }}><span className="shiftDisplay">Shift </span> B</span>
+          <span style={{ padding: 0, color: "#f6f7f8" }}>
+            <span className="shiftDisplay">Shift </span> B
+          </span>
         </Typography>
       </NavLink>
       <NavLink
@@ -79,7 +98,9 @@ const NavBar = () => {
         style={{ textDecoration: "none" }}
       >
         <Typography variant="body2" className="link" color="initial">
-          <span style={{ padding: 0, color: '#f6f7f8' }}><span className="shiftDisplay">Shift </span> C</span>
+          <span style={{ padding: 0, color: "#f6f7f8" }}>
+            <span className="shiftDisplay">Shift </span> C
+          </span>
         </Typography>
       </NavLink>
       <NavLink
@@ -88,9 +109,12 @@ const NavBar = () => {
         style={{ textDecoration: "none" }}
       >
         <Typography variant="body2" className="link" color="initial">
-          <span style={{ padding: 0, color: '#f6f7f8' }}><span className="shiftDisplay">Shift </span> D</span>
+          <span style={{ padding: 0, color: "#f6f7f8" }}>
+            <span className="shiftDisplay">Shift </span> D
+          </span>
         </Typography>
       </NavLink>
+
       <List
         sx={{
           width: "100%",
@@ -99,9 +123,10 @@ const NavBar = () => {
           borderRadius: "20px",
           // bgcolor: "#caf0f8",
           padding: "0px",
-          position: 'absolute',
-          right: '2%'
-        }} className='more'
+          position: "absolute",
+          right: "2%",
+        }}
+        className="more"
         component="nav"
         aria-labelledby="subheader"
       >
@@ -110,11 +135,15 @@ const NavBar = () => {
             sx={{ p: 0 }}
             variant="body2"
             className="link"
-          // color="initial"
+            // color="initial"
           >
-            <span style={{ padding: 0, color: '#f6f7f8' }}>More</span>
+            <span style={{ padding: 0, color: "#f6f7f8" }}>More</span>
           </Typography>
-          {open ? <ExpandLess style={{ padding: 0, color: '#f6f7f8' }} /> : <ExpandMore style={{ padding: 0, color: '#f6f7f8' }} />}
+          {open ? (
+            <ExpandLess style={{ padding: 0, color: "#f6f7f8" }} />
+          ) : (
+            <ExpandMore style={{ padding: 0, color: "#f6f7f8" }} />
+          )}
         </ListItemButton>
         <Collapse
           style={{ backgroundColor: "white" }}
@@ -147,15 +176,21 @@ const NavBar = () => {
         </Collapse>
       </List>
 
-      {modal ? <Modal display={modal} handleAllClose={handleAllClose} /> : ""}
-      {about ? <About display={about} handleAllClose={handleAllClose} /> : ""}
+      {modal ? <Modal display={modal} handleAllClose={handleAllClose2} /> : ""}
+      {about ? <About display={about} handleAllClose={handleAllClose2} /> : ""}
 
       {/* {shifts.map(({ name }, index) => {
-                <Link to={`/shift/${name}`} style={{ textDecoration: 'none' }} key={index} >
-                    {console.log(name)            }
-                    <Typography variant="body2" className='link' color="initial">{name}</Typography>
-                </Link>
-            })} */}
+        <Link
+          to={`/shift/${name}`}
+          style={{ textDecoration: "none" }}
+          key={index}
+        >
+          {console.log(name)}
+          <Typography variant="body2" className="link" color="initial">
+            {name}
+          </Typography>
+        </Link>;
+      })} */}
     </Stack>
   );
 };

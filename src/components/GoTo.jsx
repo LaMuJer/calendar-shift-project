@@ -3,12 +3,13 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo, useContext } from "react";
 import { months } from "../utils/constant";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { Alert, Collapse } from "@mui/material";
+import { Context } from "../Store/LoadingStore";
 
 const GoTo = ({ handleChange }) => {
   // const [day, setDay] = useState("");
@@ -16,10 +17,12 @@ const GoTo = ({ handleChange }) => {
   const [open, setOpen] = useState(false);
   const [year, setYear] = useState("");
   const [countDate, setCountDate] = useState();
+  const { handleStartLoading } = useContext(Context);
 
   const handleClick = () => {
     if (month && year) {
       handleChange(1, month, year);
+      handleStartLoading();
     } else {
       setOpen(true);
     }
@@ -92,7 +95,9 @@ const GoTo = ({ handleChange }) => {
       </Collapse>
 
       <div className="gotoContainer">
-        <h4 style={{color: '#fff', marginBottom: '15px', width: '345px'}}>Goto</h4>
+        <h4 style={{ color: "#fff", marginBottom: "15px", width: "345px" }}>
+          Goto
+        </h4>
 
         <div
           style={{
@@ -240,4 +245,4 @@ const GoTo = ({ handleChange }) => {
   );
 };
 
-export default GoTo;
+export default memo(GoTo);

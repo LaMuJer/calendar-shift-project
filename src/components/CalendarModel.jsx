@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo, useContext } from "react";
 import Calendar from "react-calendar";
+import { Context } from "../Store/LoadingStore";
 
 // date
 import date from "../utils/date";
@@ -12,6 +13,7 @@ const CalendarModel = ({ shift, dater }) => {
   const [end, setEnd] = useState(null);
   const [active, setActive] = useState(null);
   const [show, setShow] = useState(true);
+  const { loading, handleStopLoading } = useContext(Context);
 
   // const showOneDayOnly = (value) => {
   //   console.log(value);
@@ -51,7 +53,7 @@ const CalendarModel = ({ shift, dater }) => {
   };
 
   const handleManageData = (param) => {
-    for (const x of date) {
+    for (let x of date) {
       if (
         new Date(x.date).toLocaleDateString() ==
         new Date(param.date).toLocaleDateString()
@@ -93,6 +95,10 @@ const CalendarModel = ({ shift, dater }) => {
     }
   }, [dater]);
 
+  useEffect(() => {
+    handleStopLoading();
+  }, [shift, handleManageData]);
+
   const handleViewChange = ({ action, activeStartDate, value, view }) => {
     if (view !== "month") {
       setShow(false);
@@ -103,28 +109,37 @@ const CalendarModel = ({ shift, dater }) => {
 
   return (
     <>
-      <Calendar
-        onChange={handleChange}
-        value={active ? active : value}
-        goToRangeStartOnSelect
-        tileContent={handleManageData}
-        selectRange={true}
-        onViewChange={handleViewChange}
-        activeStartDate={active}
-        showNeighboringMonth
-      // onClickDay={showOneDayOnly}
-      />
-      <div style={{ marginTop: "50px" }}>
-        <p style={{ color: "#ffffff90" }}>
-          <span className="shiftDisplay">From</span>
-          <span className="selectedDateShow">{start ? start : "_____"}</span>
-          <span className="shiftDisplay">To</span>
-          <span className="selectedDateShow">{end ? end : "_____"}</span>
-          <span className="shiftDisplay">Total</span>
-          <span className="selectedDateShow">{count ? count : "0"} days</span>
-        </p>
-      </div>
+      {loading ? (
+        <h1>Loading</h1>
+      ) : (
+        <>
+          <Calendar
+            onChange={handleChange}
+            value={active ? active : value}
+            goToRangeStartOnSelect
+            tileContent={handleManageData}
+            selectRange={true}
+            onViewChange={handleViewChange}
+            activeStartDate={active}
+            showNeighboringMonth
+          />
+          <div style={{ marginTop: "50px" }}>
+            <p style={{ color: "#ffffff90" }}>
+              <span className="shiftDisplay">From</span>
+              <span className="selectedDateShow">
+                {start ? start : "_____"}
+              </span>
+              <span className="shiftDisplay">To</span>
+              <span className="selectedDateShow">{end ? end : "_____"}</span>
+              <span className="shiftDisplay">Total</span>
+              <span className="selectedDateShow">
+                {count ? count : "0"} days
+              </span>
+            </p>
+          </div>
+        </>
+      )}
     </>
   );
 };
-export default CalendarModel;
+export default memo(CalendarModel);
