@@ -117,7 +117,6 @@ const Home = () => {
           sx={{
             bgcolor: "#20a4f3",
             textTransform: "capitalize",
-            mt: "30px",
           }}
         >
           Load More

@@ -43,7 +43,6 @@ body,
 
 .sticky th {
   color: #fdfffc !important;
-
 }
 
 table {
@@ -178,7 +177,6 @@ th {
   color: #ffffffae;
   opacity: 1 !important;
   /* background-color: rgb(149, 29, 29); */
-
 }
 
 /* react-calendar__year-view__months__month */
@@ -210,7 +208,6 @@ ul {
 }
 
 @media screen and (max-width: 500px) {
-
   html,
   body,
   #root {
@@ -272,7 +269,7 @@ ul {
   table {
     display: block;
     width: 95vw !important;
-    height: 63vh;
+    height: 57vh;
     overflow-x: scroll;
     overflow-y: scroll;
     position: relative;
@@ -287,5 +284,4 @@ ul {
   .shiftText {
     font-size: 20px;
   }
-
 }
