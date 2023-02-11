@@ -34,7 +34,7 @@ const Shift = () => {
           justifyContent: "start",
           alignItems: "center",
         }}
-      >
+      > 
         {!loading && <GoTo handleChange={handleChange} />}
         <CalendarModel shift={id} dater={date} />
       </Box>

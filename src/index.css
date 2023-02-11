@@ -26,6 +26,16 @@ body,
   /* color: #fff; */
 }
 
+.loading {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f6f7f8;
+  opacity: .5;
+}
+
 .link {
   padding: 10px 20px;
   margin: 0 20px;
@@ -35,14 +45,14 @@ body,
 
 .sticky {
   position: sticky;
-  top: 15%;
+  top: 9%;
   background-color: #011627;
   box-shadow: 0 2px 2px -1px rgba(0, 0, 0);
-  border-bottom: 1px solid #fdfffc;
+  border-bottom: 1px solid #f6f7f8;
 }
 
 .sticky th {
-  color: #fdfffc !important;
+  color: #f6f7f8 !important;
 }
 
 table {
@@ -50,7 +60,9 @@ table {
   position: relative;
   background-color: #011627;
   text-align: left;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #f6f7f850;
 }
 
 tbody {
@@ -60,16 +72,41 @@ tbody {
   /* display: inline-block; */
 }
 
-td,
 th {
   border: 1px solid #00000030;
+  border-right: 1px solid #f6f7f850;
   padding: 5px 5px;
+  background-color: #011627;
 }
 
 tbody td {
   font-size: 13px;
   /* padding: 10px 5px; */
-  color: #fdfffc;
+  color: #f6f7f8;
+}
+
+table td {
+  border-right: 1px solid #f6f7f850;
+  /* border-bottom: 1px solid #fdfffc50; */
+  padding: 10px 5px;
+
+}
+
+table tr:nth-of-type(even) {
+  background-color: #00000050;
+}
+
+table tr:nth-of-type(odd) {
+  background-color: #ff336650;
+}
+
+
+table td:last-child {
+  border-right: none;
+}
+
+table tr:last-child td {
+  border-bottom: none;
 }
 
 thead {
@@ -90,7 +127,7 @@ th {
 }
 
 .highlight {
-  background-color: #2ec4b6;
+  background-color: #ff9f1c !important;
   font-weight: 700;
 }
 
@@ -104,10 +141,9 @@ th {
   height: 100vh;
   /* background-color: #00000070; */
   position: absolute;
-  top: -100%;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 50%;
+  left: 0%;
+  margin: -50px 0 0 0px;
   z-index: 2;
 }
 
@@ -207,7 +243,30 @@ ul {
   align-items: center;
 }
 
+.daycountCon {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.daycountCon button {
+  /* height: 10px; */
+  background-color: #ff3366;
+  padding: 5px 30px;
+  border-radius: 5px;
+  margin: 0 10px;
+  font-weight: 500;
+  color: #f6f7f8;
+}
+
+.daycountCon button:hover {
+  background-color: #ff1650;
+}
+
 @media screen and (max-width: 500px) {
+
   html,
   body,
   #root {
@@ -215,7 +274,7 @@ ul {
   }
 
   .highlightsDisplayNone span:nth-child(1) {
-    width: 33% !important;
+    width: 29% !important;
     height: 38% !important;
     background-color: #fff;
   }

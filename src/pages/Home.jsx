@@ -4,11 +4,12 @@ import data from "../utils/DataTable";
 
 const Home = () => {
   const [loadMore, setLoadMore] = useState({
-    count: 10,
+    count: 40,
     con: true,
   });
   const [shift, setShift] = useState(null);
   const [text, setText] = useState("");
+  const [text2, setText2] = useState("");
 
   const objLoop = (x, assignTime) => {
     for (let k in x[0].assign) {
@@ -31,11 +32,13 @@ const Home = () => {
     );
 
     if (currentTime >= 7 && currentTime < 19) {
-      setText("Current shift is");
+      setText("Currently, Shift");
       objLoop(finder, "Morning");
+      setText2("is working till 7pm");
     } else {
-      setText("Current shift is");
+      setText("Currently, Shift");
       objLoop(finder, "Night");
+      setTex2("is working till 7am");
     }
   }, []);
 
@@ -47,7 +50,7 @@ const Home = () => {
   date.splice(loadMore.count, data.length - 1);
 
   const handleLoadMore = () => {
-    setLoadMore((pre) => ({ ...pre, count: pre.count + 10 }));
+    setLoadMore((pre) => ({ ...pre, count: pre.count + 30 }));
   };
 
   useEffect(() => {
@@ -65,12 +68,12 @@ const Home = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        mt: "60px",
+        mt: "0px",
         flexDirection: "column",
       }}
     >
-      <h1 style={{ color: "white", marginBottom: "10px" }}>
-        {text} - {shift}
+      <h1 style={{ color: "white", marginBottom: "10px" }} className='shiftText'>
+        {text} - {shift} {text2}
       </h1>
       <table className="shiftSheet ">
         <thead className="sticky">
@@ -97,7 +100,7 @@ const Home = () => {
                 </p>
                 <p>
                   {new Date(i.date).toLocaleDateString("us", {
-                    weekday: "long",
+                    weekday: "short",
                   })}
                 </p>
               </td>
@@ -117,6 +120,7 @@ const Home = () => {
           sx={{
             bgcolor: "#20a4f3",
             textTransform: "capitalize",
+            mt: '10px'
           }}
         >
           Load More
