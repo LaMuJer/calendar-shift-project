@@ -257,7 +257,7 @@ ul {
 
 .daycountCon button {
   /* height: 10px; */
-  background-color: #ff3366;
+  background-color: #76818e;
   padding: 5px 30px;
   border-radius: 5px;
   margin: 0 10px;
@@ -266,7 +266,7 @@ ul {
 }
 
 .daycountCon button:hover {
-  background-color: #ff1650;
+  background-color: #596067;
 }
 
 @media screen and (max-width: 500px) {

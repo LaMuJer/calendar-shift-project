@@ -15,15 +15,14 @@ import ColorHighlight from "./ColorHighlight";
 import Button from "@mui/material/Button";
 
 const CalendarModel = ({ shift, dater }) => {
-  const [value, setValue] = useState(new Date());
+  const [value, setValue] = useState(null);
   const [count, setCount] = useState(null);
   const [start, setStart] = useState(null);
   const [end, setEnd] = useState(null);
   const [active, setActive] = useState(new Date());
   const [show, setShow] = useState(true);
   const { loading, handleStopLoading } = useContext(Context);
-  const clear = useRef();
-  const [className, setclassName] = useState("react-calendar__tile--active");
+
 
   console.log(dater);
 
@@ -40,8 +39,11 @@ const CalendarModel = ({ shift, dater }) => {
   }
 
   const handleChange = (date) => {
+    console.log(date)
     const startDay = new Date(date[0]);
     const endDay = new Date(date[1]);
+    console.log('change')
+
     setStart(
       startDay.toLocaleDateString("en-GB", {
         day: "numeric",
@@ -82,7 +84,7 @@ const CalendarModel = ({ shift, dater }) => {
     // const activeDiv = clear.current.getElementsByClassName('.react-calendar__tile--active')
     // console.log(activeDiv)
     // activeDiv.classList.remove(className)
-    setValue(new Date());
+    setValue(null);
     setStart("____");
     setCount("0");
     setEnd("____");
@@ -106,6 +108,10 @@ const CalendarModel = ({ shift, dater }) => {
     }
   };
 
+  // const handleStartDateChange = (date) => {
+  //   setValue(date[1])
+  // }
+
   return (
     <>
       {loading ? (
@@ -117,14 +123,15 @@ const CalendarModel = ({ shift, dater }) => {
           <Calendar
             onChange={handleChange}
             value={value}
-            goToRangeStartOnSelect
+            goToRangeStartOnSelect={false}
+            // goToRangeEndOnSelect
             tileContent={handleManageData}
+            // onActiveStartDateChange={handleStartDateChange}
             selectRange={true}
             maxDate={new Date("12-31-2025")}
             minDate={new Date("1-1-2023")}
             onViewChange={handleViewChange}
             showNeighboringMonth
-            ref={clear}
           />
           <div style={{ marginTop: "50px" }} className="daycountCon">
             <p style={{ color: "#ffffff90" }}>
@@ -140,7 +147,7 @@ const CalendarModel = ({ shift, dater }) => {
               </span>
             </p>
             <Button variant="contained" onClick={handleClear}>
-              Clear
+              Clear Selection
             </Button>
           </div>
         </>
