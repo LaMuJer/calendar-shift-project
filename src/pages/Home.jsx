@@ -38,7 +38,7 @@ const Home = () => {
     } else {
       setText("Currently, Shift");
       objLoop(finder, "Night");
-      setTex2("is working till 7am");
+      setText2("is working till 7am");
     }
   }, []);
 

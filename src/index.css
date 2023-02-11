@@ -45,7 +45,7 @@ body,
 
 .sticky {
   position: sticky;
-  top: 9%;
+  top: 0%;
   background-color: #011627;
   box-shadow: 0 2px 2px -1px rgba(0, 0, 0);
   border-bottom: 1px solid #f6f7f8;
@@ -63,6 +63,10 @@ table {
   border-collapse: separate;
   border-spacing: 0;
   border: 1px solid #f6f7f850;
+  display: block;
+  height: 57vh;
+  overflow-y: scroll;
+  position: relative;
 }
 
 tbody {
@@ -342,5 +346,14 @@ ul {
 
   .shiftText {
     font-size: 20px;
+  }
+
+  .daycountCon {
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .daycountCon button {
+    margin-top: 20px;
   }
 }
