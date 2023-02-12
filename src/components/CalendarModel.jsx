@@ -91,6 +91,7 @@ const CalendarModel = ({ shift, dater }) => {
   useEffect(() => {
     if (dater) {
       setValue(new Date(dater));
+      setMonth(dater);
     }
   }, [dater]);
 
