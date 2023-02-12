@@ -21,6 +21,8 @@ const CalendarModel = ({ shift, dater }) => {
   const [end, setEnd] = useState(null);
   const [active, setActive] = useState(new Date());
   const [show, setShow] = useState(true);
+  const [month, setMonth] = useState(null);
+  const [range, setRange] = useState(false);
   const { loading, handleStopLoading } = useContext(Context);
 
   function countDays(date1, date2) {
@@ -36,10 +38,10 @@ const CalendarModel = ({ shift, dater }) => {
   }
 
   const handleChange = (date) => {
-    console.log(date)
+    console.log(date);
     const startDay = new Date(date[0]);
     const endDay = new Date(date[1]);
-    console.log('change')
+    console.log("change");
 
     setStart(
       startDay.toLocaleDateString("en-GB", {
@@ -56,6 +58,7 @@ const CalendarModel = ({ shift, dater }) => {
       })
     );
     setCount(countDays(startDay, endDay));
+    setRange(true);
     setValue(date);
   };
 
@@ -78,7 +81,8 @@ const CalendarModel = ({ shift, dater }) => {
   };
 
   const handleClear = () => {
-    setValue(null);
+    setValue(month);
+    setRange(false);
     setStart("____");
     setCount("0");
     setEnd("____");
@@ -102,10 +106,17 @@ const CalendarModel = ({ shift, dater }) => {
     }
   };
 
+  const handleNavigate = ({ action, activeStartDate }) => {
+    if (action == "next2" || action == "next") {
+      setMonth(activeStartDate);
+    }
+  };
+
+  console.log(month);
+
   // const handleStartDateChange = (date) => {
   //   setValue(date[1])
   // }
-
 
   return (
     <>
@@ -117,12 +128,14 @@ const CalendarModel = ({ shift, dater }) => {
         <>
           <Calendar
             onChange={handleChange}
-            value={value}
+            defaultValue={value}
+            value={range === false ? null : undefined}
             goToRangeStartOnSelect={false}
             // goToRangeEndOnSelect
             tileContent={handleManageData}
+            onActiveStartDateChange={handleNavigate}
             // onActiveStartDateChange={handleStartDateChange}
-            selectRange={true}
+            selectRange={range}
             maxDate={new Date("12-31-2025")}
             minDate={new Date("1-1-2023")}
             onViewChange={handleViewChange}
