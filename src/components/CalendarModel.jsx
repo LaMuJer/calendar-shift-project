@@ -23,9 +23,6 @@ const CalendarModel = ({ shift, dater }) => {
   const [show, setShow] = useState(true);
   const { loading, handleStopLoading } = useContext(Context);
 
-
-  console.log(dater);
-
   function countDays(date1, date2) {
     // Convert both dates to milliseconds
     var date1Ms = date1.getTime();
@@ -81,9 +78,6 @@ const CalendarModel = ({ shift, dater }) => {
   };
 
   const handleClear = () => {
-    // const activeDiv = clear.current.getElementsByClassName('.react-calendar__tile--active')
-    // console.log(activeDiv)
-    // activeDiv.classList.remove(className)
     setValue(null);
     setStart("____");
     setCount("0");
@@ -111,6 +105,7 @@ const CalendarModel = ({ shift, dater }) => {
   // const handleStartDateChange = (date) => {
   //   setValue(date[1])
   // }
+
 
   return (
     <>

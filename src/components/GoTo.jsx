@@ -26,6 +26,8 @@ const GoTo = ({ handleChange }) => {
     } else {
       setOpen(true);
     }
+    setMonth('')
+    setYear('')
   };
 
   const dateFun = (mn, yr) => {
@@ -53,7 +55,7 @@ const GoTo = ({ handleChange }) => {
   }
 
   let yearCounts = [];
-  for (let i = 2022; i < 2026; i++) {
+  for (let i = 2023; i < 2026; i++) {
     yearCounts.push(i);
   }
 

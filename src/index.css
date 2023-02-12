@@ -9,6 +9,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
+  scroll-behavior: smooth;
 }
 
 p {
@@ -20,9 +21,10 @@ body,
 #root {
   background-color: #011627;
   width: 100vw;
-  height: 100vh;
+  height: 120vh;
   overflow-x: hidden;
   padding-bottom: 20px;
+  scroll-behavior: smooth;
   /* color: #fff; */
 }
 
@@ -275,6 +277,7 @@ ul {
   body,
   #root {
     overflow-y: hidden;
+    height: 100vh;
   }
 
   .highlightsDisplayNone span:nth-child(1) {
