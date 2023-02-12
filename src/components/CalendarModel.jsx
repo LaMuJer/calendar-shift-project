@@ -107,16 +107,16 @@ const CalendarModel = ({ shift, dater }) => {
   };
 
   const handleNavigate = ({ action, activeStartDate }) => {
-    if (action == "next2" || action == "next") {
+    console.log(action);
+    if (
+      action == "next2" ||
+      action == "next" ||
+      action == "prev" ||
+      action == "prev2"
+    ) {
       setMonth(activeStartDate);
     }
   };
-
-  console.log(month);
-
-  // const handleStartDateChange = (date) => {
-  //   setValue(date[1])
-  // }
 
   return (
     <>
