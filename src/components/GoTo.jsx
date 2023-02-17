@@ -75,29 +75,37 @@ const GoTo = ({ handleChange }) => {
 
   return (
     <>
-      <Collapse in={open}>
-        <Alert
-          action={
-            <IconButton
-              aria-label="close"
-              color="inherit"
-              size="small"
-              onClick={() => {
-                setOpen(false);
-              }}
-            >
-              <CloseIcon fontSize="inherit" />
-            </IconButton>
-          }
-          variant="outlined"
-          severity="error"
-        >
-          Select value in relative fileld
-        </Alert>
-      </Collapse>
+
 
       <div className="gotoContainer">
-        <h4 style={{ color: "#fff", marginBottom: "15px", width: "345px" }}>
+        <Collapse in={open}>
+          <Alert style={{
+            backgroundColor: 'red',
+            position: 'absolute',
+            top: '100%',
+            left: '20%',
+            zIndex: 1,
+            opacity: '1'
+          }}
+            action={
+              <IconButton
+                aria-label="close"
+                color="inherit"
+                size="small"
+                onClick={() => {
+                  setOpen(false);
+                }}
+              >
+                <CloseIcon fontSize="inherit" />
+              </IconButton>
+            }
+            variant="filled"
+            severity="error"
+          >
+            Select value in relative fileld
+          </Alert>
+        </Collapse>
+        <h4 style={{ color: "#fff", marginRight: "15px", fontSize: '15px' }}>
           Goto
         </h4>
 
@@ -159,8 +167,8 @@ const GoTo = ({ handleChange }) => {
           <Box sx={{ minWidth: 120, mr: "10px" }}>
             <FormControl fullWidth>
               <InputLabel
-                id="month"
-                style={{ color: "#ffffffaa", top: "-40%" }}
+                id="month" variant="filled"
+                style={{ color: "#ffffffaa", top: "-30%", fontSize: '12px' }}
               >
                 Month
               </InputLabel>
@@ -196,7 +204,7 @@ const GoTo = ({ handleChange }) => {
 
           <Box sx={{ minWidth: 120, mr: "30px" }}>
             <FormControl fullWidth>
-              <InputLabel id="year" style={{ color: "#ffffffaa", top: "-40%" }}>
+              <InputLabel id="year" variant="filled" style={{ color: "#ffffffaa", top: "-30%", fontSize: '12px' }}>
                 Year
               </InputLabel>
               <Select

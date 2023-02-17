@@ -43,7 +43,7 @@ const Modal = ({ display, handleAllClose }) => {
             <div>
               The information provided by ("we," "us," or "our") on
               <span style={{ margin: "0 10px" }}>
-                <a href="https://ourddf.ae">https://ourddf.ae</a>
+                <a style={{color: 'skyblue'}} href="https://ourddf.ae">https://ourddf.ae</a>
               </span>
               (the "Site") is for general informational purposes only. All
               information on the Site is provided in good faith, however we make

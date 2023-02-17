@@ -18,6 +18,9 @@ const CalendarModel = ({ shift, dater }) => {
   const [value, setValue] = useState(null);
   const [count, setCount] = useState(null);
   const [start, setStart] = useState(null);
+  const [startUi, setStartUi] = useState(start)
+  // console.log(start);
+
   const [end, setEnd] = useState(null);
   const [active, setActive] = useState(new Date());
   const [show, setShow] = useState(true);
@@ -38,10 +41,8 @@ const CalendarModel = ({ shift, dater }) => {
   }
 
   const handleChange = (date) => {
-    console.log(date);
     const startDay = new Date(date[0]);
     const endDay = new Date(date[1]);
-    console.log("change");
 
     setStart(
       startDay.toLocaleDateString("en-GB", {
@@ -88,6 +89,22 @@ const CalendarModel = ({ shift, dater }) => {
     setEnd("____");
   };
 
+  const handleClick = (date) => {
+    let startUiFun = date.toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    })
+    setStartUi(startUiFun)
+    console.log(startUi)
+  }
+
+  useEffect(() => {
+    // code
+    setStartUi(start)
+  }, [start])
+  
+
   useEffect(() => {
     if (dater) {
       setValue(new Date(dater));
@@ -108,7 +125,6 @@ const CalendarModel = ({ shift, dater }) => {
   };
 
   const handleNavigate = ({ action, activeStartDate }) => {
-    console.log(action);
     if (
       action == "next2" ||
       action == "next" ||
@@ -141,8 +157,9 @@ const CalendarModel = ({ shift, dater }) => {
             minDate={new Date("1-1-2023")}
             onViewChange={handleViewChange}
             showNeighboringMonth
+            onClickDay={handleClick}
           />
-          <div style={{ marginTop: "50px" }} className="daycountCon">
+          <div style={{ marginTop: "5px" }} className="daycountCon">
             <p style={{ color: "#ffffff90" }}>
               <span className="shiftDisplay">From</span>
               <span className="selectedDateShow">

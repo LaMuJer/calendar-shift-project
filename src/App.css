@@ -6,6 +6,10 @@ button {
   position: relative;
 }
 
+.react-calendar__navigation__label__labelText,.react-calendar__navigation__arrow{
+  font-size: 20px;
+}
+
 .react-calendar__month-view__weekdays {
   margin-bottom: 10px;
   display: flex;
@@ -20,6 +24,7 @@ button {
 abbr[title] {
   position: relative;
   color: #fff;
+  font-weight: 400;
   margin-right: 200px;
   display: inline-block;
 }
@@ -44,8 +49,8 @@ abbr {
 .react-calendar {
   width: 500px;
   height: 100%;
-  margin-top: 30px;
-  padding: 20px 15px;
+  margin-top: 10px;
+  padding: 0 15px ;
   border: none;
   border-top: 1px solid #00000020;
   border-bottom: 1px solid #00000020;
