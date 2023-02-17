@@ -101,13 +101,20 @@ const CalendarModel = ({ shift, dater }) => {
   };
 
   const handleClick = (date) => {
+    if (Array.isArray(value)) {
+      setStart("____");
+      setCount("0");
+      setEnd("____");
+    }
+    // if (value[1]) {
+    //   console.log("Hello");
+    // }
     let startUiFun = date.toLocaleDateString("en-GB", {
       day: "numeric",
       month: "short",
       year: "numeric",
     });
     setStartUi(startUiFun);
-    console.log(startUi);
   };
 
   useEffect(() => {
