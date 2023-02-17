@@ -18,7 +18,7 @@ const CalendarModel = ({ shift, dater }) => {
   const [value, setValue] = useState(null);
   const [count, setCount] = useState(null);
   const [start, setStart] = useState(null);
-  const [startUi, setStartUi] = useState(start)
+  const [startUi, setStartUi] = useState(start);
   // console.log(start);
 
   const [end, setEnd] = useState(null);
@@ -41,24 +41,35 @@ const CalendarModel = ({ shift, dater }) => {
   }
 
   const handleChange = (date) => {
-    const startDay = new Date(date[0]);
-    const endDay = new Date(date[1]);
+    if (!date[0]) {
+      setStart(
+        new Date(date).toLocaleDateString("en-GB", {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+        })
+      );
+    } else {
+      const startDay = new Date(date[0]);
+      const endDay = new Date(date[1]);
 
-    setStart(
-      startDay.toLocaleDateString("en-GB", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-      })
-    );
-    setEnd(
-      endDay.toLocaleDateString("en-GB", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-      })
-    );
-    setCount(countDays(startDay, endDay));
+      setStart(
+        startDay.toLocaleDateString("en-GB", {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+        })
+      );
+      setEnd(
+        endDay.toLocaleDateString("en-GB", {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+        })
+      );
+      setCount(countDays(startDay, endDay));
+    }
+
     setRange(true);
     setValue(date);
   };
@@ -94,16 +105,15 @@ const CalendarModel = ({ shift, dater }) => {
       day: "numeric",
       month: "short",
       year: "numeric",
-    })
-    setStartUi(startUiFun)
-    console.log(startUi)
-  }
+    });
+    setStartUi(startUiFun);
+    console.log(startUi);
+  };
 
   useEffect(() => {
     // code
-    setStartUi(start)
-  }, [start])
-  
+    setStartUi(start);
+  }, [start]);
 
   useEffect(() => {
     if (dater) {
